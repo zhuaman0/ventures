@@ -18,7 +18,7 @@
 			<div class="tw-flex tw-space-x-4">
 				<a href="#"><img src="/assets/icons/social/Facebook.svg" alt="Facebook" /></a>
 				<a href="#"><img src="/assets/icons/social/Instagram.svg" alt="Instagram" /></a>
-				<a href="#"><img src="/assets/icons/social/youtube.svg" alt="YouTube" /></a>
+				<a href="#"><img src="/assets/icons/social/Youtube.svg" alt="YouTube" /></a>
 			</div>
 		</div>
 
