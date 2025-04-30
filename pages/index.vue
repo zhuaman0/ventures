@@ -3,10 +3,10 @@ import { useToast } from 'vue-toastification';
 
 const { locales, setLocale } = useI18n();
 
-onMounted(() => {
-	const toast =  useToast();
-	toast.success('i have solve this')
-})
+// onMounted(() => {
+// 	const toast =  useToast();
+// 	toast.success('i have solve this')
+// })
 </script>
 
 <template>
