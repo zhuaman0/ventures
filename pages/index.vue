@@ -1,5 +1,12 @@
-<script setup>
+<script setup lang="ts">
+import { useToast } from 'vue-toastification';
+
 const { locales, setLocale } = useI18n();
+
+onMounted(() => {
+	const toast =  useToast();
+	toast.success('i have solve this')
+})
 </script>
 
 <template>
@@ -14,8 +21,4 @@ const { locales, setLocale } = useI18n();
 </template>
 
 <style lang="scss">
-.muha {
-	background-color: $primary;
-	color: $secondary;
-}
 </style>
