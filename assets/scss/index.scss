@@ -9,3 +9,34 @@
 	font-family: 'Atyp';
 	src: url('/assets/fonts/atyp/AtypDisplay-Light.woff2');
 }
+
+
+
+// Input design
+.v-text-field .v-input__details {
+	display: none !important;
+}
+
+.v-input__details {
+	display: none !important;
+}
+
+.v-field__outline {
+	outline: none !important;
+}
+
+// .v-field--variant-outlined .v-field__outline {
+// 	border: none !important;
+// 	outline: none !important;
+// }
+
+// .v-field--variant-outlined.v-field--focused .v-field__outline {
+// 	border: 5px solid blue !important;
+// 	outline: none !important;
+// }
+
+.v-field.v-field--focused .v-field__outline, .v-input.v-input--error .v-field__outline {
+	opacity: 1 !important;
+	border: 1px solid  $primary  !important;
+	outline: none !important;
+}
