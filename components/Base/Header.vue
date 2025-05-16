@@ -29,10 +29,10 @@
 				</v-list>
 			</v-menu>
 	
-			<NuxtLink to="/register" class="tw-border tw-border-[#36CE9F] tw-text-green-600 tw-px-4 tw-py-1 tw-rounded hover:tw-bg-[#36CE9F]/10">
+			<NuxtLink to="/" class="tw-border tw-border-[#36CE9F] tw-text-green-600 tw-px-4 tw-py-1 tw-rounded hover:tw-bg-[#36CE9F]/10">
 				Регистрация
 			</NuxtLink>
-			<NuxtLink to="/login" class="tw-bg-[#36CE9F] tw-text-white tw-px-4 tw-py-1 tw-rounded hover:tw-bg-[#36CE9F]/80">
+			<NuxtLink to="/auth/login" class="tw-bg-[#36CE9F] tw-text-white tw-px-4 tw-py-1 tw-rounded hover:tw-bg-[#36CE9F]/80">
 				Войти
 			</NuxtLink>
 	
@@ -78,10 +78,10 @@
 						</v-list>
 					</v-menu>
 
-					<NuxtLink to="/login" class="tw-bg-[#36CE9F] tw-w-full tw-text-center tw-text-white tw-py-2 tw-rounded hover:tw-bg-[#36CE9F]/80">
+					<NuxtLink to="/auth/login" class="tw-bg-[#] tw-w-full tw-text-center tw-text-white tw-py-2 tw-rounded hover:tw-bg-[#36CE9F]/80">
 						Войти
 					</NuxtLink>
-					<NuxtLink to="/register" class="tw-border tw-border-[#36CE9F] tw-text-green-600 tw-w-full tw-text-center tw-py-2 tw-rounded hover:tw-bg-[#36CE9F]/10">
+					<NuxtLink to="/" class="tw-border tw-border-[#36CE9F] tw-text-green-600 tw-w-full tw-text-center tw-py-2 tw-rounded hover:tw-bg-[#36CE9F]/10">
 						Регистрация
 					</NuxtLink>
 				</div>

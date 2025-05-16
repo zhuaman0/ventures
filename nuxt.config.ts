@@ -21,7 +21,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/i18n',
     '@nuxtjs/tailwindcss',
-    'vuetify-nuxt-module',
     '@nuxt/icon'
   ],
   components: [
