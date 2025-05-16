@@ -9,6 +9,7 @@
 					<div class="tw-mb-4">
 						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Электронная почта</label>
 					   <v-text-field
+						     v-model="gmail"
 					        class="tw-w-full tw-mt-2"
 					        id="gmail"
                        placeholder="name@example.com"
@@ -19,6 +20,7 @@
 					<div class="tw-mb-4">
 						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="password">Электронная почта</label>
 						<v-text-field
+						  v-model="password"
 					     class="tw-mt-2"
                     :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
                     :type="visible ? 'text' : 'password'"
@@ -60,12 +62,25 @@ const gmail = ref('')
 const password = ref('')
 
 const loginUser = () => {
-	if(gmail.value.length === 0 && password.value.length === 0) {
-		serviceStore.toast.error('Fill the all gap')
-	}else {
-		alert('Ok')
+	if(gmail.value.trim() === '' && password.value.trim() === '') {
+		serviceStore.toast.error('Fill all gap')
+		return
+	}
+
+	if(gmail.value.includes('@')) {
+		serviceStore.toast.error('Write correct gmail')
+		return
 	}
 }
+
+onMounted(() => {
+	serviceStore.modal.show = true
+	serviceStore.modal.header = 'Hi baby',
+	serviceStore.modal.buttonText = 'Click'
+	serviceStore.modal.onClick = () => {
+		serviceStore.modal.show = false
+	}
+})
 </script>
 
 <style scoped>

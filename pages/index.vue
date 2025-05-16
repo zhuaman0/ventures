@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useToast } from 'vue-toastification';
-
 const { locales, setLocale } = useI18n();
+
 
 // onMounted(() => {
 // 	const toast =  useToast();

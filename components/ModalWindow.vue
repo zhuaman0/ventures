@@ -11,16 +11,34 @@
 		<div class="tw-flex tw-justify-center">
 			<img src="/assets/icons/type/success.svg" alt="">
 		</div>
-		<h1 class="tw-mt-4 tw-mb-2 tw-text-[#181236] tw-font-bold tw-text-center tw-text-[20px]">
-			Ваше обращение успешно отправлена!
+		<h1 class="tw-mt-4 tw-mb-6 tw-text-[#181236] tw-font-bold tw-text-center tw-text-[20px]">
+			{{ header }}
 		</h1>
+		<button @click="$emit('onClick')" class="tw-text-white tw-bg-[#36CE9F] tw-w-full tw-h-[48px]">{{ buttonText }}</button>
 	</div>
 	</transition>
 	</div>
 </template>
 
-<script setup lang="ts">
-
+<script lang="ts">
+export type ModalTypes = "succes" | "danger" | "warning";
+export default defineComponent({
+	props: {
+		type: {
+			type: String,
+			required: false,
+			default: "success"
+		},
+		header: {
+			type: String,
+			required: true
+		},
+		buttonText: {
+			type: String,
+			required: true
+		}
+	}
+})
 </script>
 
 <style scoped>
