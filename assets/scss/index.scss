@@ -42,3 +42,38 @@
 .v-btn--variant-elevated {
 	box-shadow: none !important;
 }
+
+.v-checkbox .v-selection-control {
+	min-height: none !important;
+}
+
+.v-selection-control--density-default {
+	all: unset !important;
+ }
+ 
+
+// v-breadcrumbs-item
+
+.v-breadcrumbs-item {
+	color: #228B6B!important;
+}
+
+.v-breadcrumbs-divider {
+	color: #228B6B!important;
+}
+
+.v-breadcrumbs {
+	padding: 0px 0px !important;
+}
+
+// checkboxx
+
+.v-input__details {
+	display: none !important;
+}
+
+// .v-selection-control__input input {
+// 	position: relative !important;
+// 	width: 0 !important;
+// 	height: 0 !important;
+// }
