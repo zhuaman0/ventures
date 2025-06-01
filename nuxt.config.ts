@@ -21,7 +21,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/i18n',
     '@nuxtjs/tailwindcss',
-    'vuetify-nuxt-module',
     '@nuxt/icon'
   ],
   components: [
@@ -38,6 +37,8 @@ export default defineNuxtConfig({
 	locales: [
 		{ code: 'ru', name: 'Russian', file: 'ru.json' },
 		{ code: 'kz', name: 'Kazakh', file: 'kz.json' }
-	]
+	],
+	strategy: 'no_prefix',
+	langDir: 'locales/'
   }
 })

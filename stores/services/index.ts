@@ -14,8 +14,8 @@ export const useServiceStore = defineStore('service', {
 		modal: {
 			type: 'success',
 			show: false,
-			header: '',
-			buttonText: '',
+			header: 'Ваше обращение успешно отправлена!',
+			buttonText: 'Вернуться на главную',
 			rowData: [],
 			onClick: () => {},
 		}
