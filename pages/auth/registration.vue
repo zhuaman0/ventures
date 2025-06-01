@@ -21,11 +21,13 @@
 </template>
 
 <script setup lang="ts">
+import FormRegistration from '~/components/FormRegistration.vue';
 import { Link, RouteRouterPath } from '#components';
 import plane from '~/assets/icons/registration/plane.png'	
 import bag from '~/assets/icons/registration/bag.png'
 import built from '~/assets/icons/registration/built.png'
 import special from '~/assets/icons/registration/special.png'
+import { useServiceStore } from '~/stores/services';
 
 
 definePageMeta({
@@ -77,6 +79,24 @@ const route = useRoute()
 const selectedType = computed(() => route.query.type || '')
 const registrationForm = computed(() => !!selectedType.value)
 const categoriesCard = computed(() => !registrationForm.value)
+const serviceStore = useServiceStore();
+
+// const form = ref({
+//   fullName: '',
+//   email: '',
+//   phoneNumber: '',
+//   password: '',
+//   role: 'user'
+// })
+
+// const submit = async () => {
+// 	try {
+// 		await serviceStore.register(form.value)
+// 		alert("Registered Succesfully")
+// 	}catch (err) {
+// 		console.log(err)
+// 	}
+// }
 
 const typeRegistration = () => {
 }

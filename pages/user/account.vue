@@ -10,15 +10,15 @@
 			<ul class="tw-grid tw-grid-cols-2 tw-gap-5">
 				<li>
 					<h1 class="tw-text-[14px] tw-text-[#767A87]">Имя и фамилия</h1>
-					<p class="tw-text-[16px] tw-text-[#181236]">Айнур Абылай</p>
+					<p class="tw-text-[16px] tw-text-[#181236]">{{ serviceStore.user.fullname }}</p>
 				</li>
 				<li>
 					<h1 class="tw-text-[14px] tw-text-[#767A87]">Номер телефона</h1>
-					<p class="tw-text-[16px] tw-text-[#181236]">+7 (777) 123-45-67</p>
+					<p class="tw-text-[16px] tw-text-[#181236]">{{ serviceStore.user.phonenumber }}</p>
 				</li>
 				<li>
 					<h1 class="tw-text-[14px] tw-text-[#767A87]">Электронная почта</h1>
-					<p class="tw-text-[16px] tw-text-[#181236]">ainurabylai@gmail.com</p>
+					<p class="tw-text-[16px] tw-text-[#181236]">{{ serviceStore.user.email }}</p>
 				</li>
 			</ul>
 		</div>
@@ -30,6 +30,9 @@
 </template>
 
 <script setup lang="ts">
+import axios from 'axios';
+import { useServiceStore } from '~/stores/services';
+
 const breadcrumbs = [
 { 
 		title: 'Главная',
@@ -42,6 +45,34 @@ const breadcrumbs = [
     	href: '/auth/login/' 
 	}
 ]
+
+const serviceStore = useServiceStore();
+
+const getUserInfo = async () => {
+	const token = localStorage.getItem('JWT_TOKEN');
+	if(!token) {
+		console.log("In server have not token")
+		return;
+	}
+
+	try {
+		const response = await axios.get('https://zhervc-api.azurewebsites.net/api/Users/me', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+	 serviceStore.user = response.data
+	 console.log(response.data)
+	 console.log("You have take token")
+	}catch(err) {
+		console.log(err)
+		console.log('You have problem')
+	}
+}
+
+onMounted(() => {
+	getUserInfo()
+})
 </script>
 
 <style scoped>

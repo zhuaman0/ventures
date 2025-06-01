@@ -5,13 +5,14 @@
 			<div class="tw-px-4 tw-py-4 tw-w-full">
 				<form class="tw-w-full" action="">
 					<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Имя и фамилия</label>
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="fullname">Имя и фамилия</label>
 					   <v-text-field
 					        class="tw-w-full tw-mt-2"
-					        id="gmail"
+					        id="fullname"
                        placeholder="Введите имя и фамилию"
                        variant="outlined"
 							  autocomplete="off"
+							  v-model="form.fullName"
                   ></v-text-field>
 					</div>
 					<div class="tw-mb-4">
@@ -22,23 +23,26 @@
                        placeholder="name@example.com"
                        variant="outlined"
 							  autocomplete="off"
+							  v-model="form.email"
                   ></v-text-field>
 					</div>
 					<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Номер телефона</label>
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="phonenumber">Номер телефона</label>
 					   <v-text-field
 								v-maska="'+7 (###) ###-##-##'"
 					        class="tw-w-full tw-mt-2"
-					        id="gmail"
+					        id="phonenumber"
                        placeholder="+7 (---) --- --- --"
                        variant="outlined"
 							  autocomplete="off"
+							  v-model="form.phoneNumber"
                   ></v-text-field>
 					</div>
 					<div class="tw-mb-4">
 						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="password">Пароль</label>
 						<v-text-field
 					     class="tw-mt-2"
+						  id="password"
                     :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
                     :type="visible ? 'text' : 'password'"
                     placeholder="Введите пароль"
@@ -46,11 +50,13 @@
 						  :rules="[v => !!v || 'Это поле обязательно']"
                     @click:append-inner="visible = !visible"
 						  autocomplete="new-password"
+						  v-model="form.password"
                   ></v-text-field>
 					</div>
 					<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Повторите пароль</label>
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="repeatpassword">Повторите пароль</label>
 						<v-text-field
+						  id="repeatpassword"
 					     class="tw-mt-2"
                     :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
                     :type="visible ? 'text' : 'password'"
@@ -65,7 +71,7 @@
 						<span class="tw-text-[#36CE9F] tw-text-[16px]"><span class="tw-text-black">Подтверждаю, что я ознакомился(ась) с</span><br>Пользовательским соглашением и обработкой персональных данных</span>
 					</div>
 					<div class="tw-mb-4">
-						<button class="tw-bg-[#36CE9F] tw-text-white tw-font-bold tw-w-full tw-py-4">Зарегистрироваться</button>
+						<button type="button" @click="submit" class="tw-bg-[#36CE9F] tw-text-white tw-font-bold tw-w-full tw-py-4">Зарегистрироваться</button>
 					</div>
 					<div class="tw-my-[10px] tw-flex tw-justify-center">
 						<p>Уже зарегистрированы?</p>
@@ -78,10 +84,53 @@
 </template>
 
 <script setup lang="ts">
+import axios from 'axios';
+import { useServiceStore } from '~/stores/services';
+
 const visible = ref(false);
 defineProps<{
 	type: any
 }>()
+
+const serviceStore = useServiceStore();
+const router = useRouter()
+
+const registrationButton = () => {
+	serviceStore.isRegistered = true
+	router.push('/auth/verifycode/')
+}
+
+
+const form = ref({
+  fullName: '',
+  email: '',
+  phoneNumber: '',
+  password: '',
+  role: 'Investor'
+})
+
+const submit = async () => {
+	try {
+		const response = await axios.post("https://zhervc-api.azurewebsites.net/api/Users/register", {
+        fullName: form.value.fullName,
+        email: form.value.email,
+        phoneNumber: form.value.phoneNumber,
+        password: form.value.password,
+        role: form.value.role
+}, {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
+
+		serviceStore.isRegistered = true
+		console.log("Registered Succesfully")
+		localStorage.setItem('email', form.value.email)
+		router.push('/auth/verifycode/')
+	}catch (err) {
+		console.log(err)
+	}
+}
 </script>
 
 <style scoped>

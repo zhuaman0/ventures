@@ -37,7 +37,7 @@
             <v-tabs
             v-model="tab"
             bg-color="transparent"
-            color="green"
+            color="#7EE4C3"
             slider-color="#7EE4C3"
             grow
             class="tw-overflow-x-auto"
@@ -54,13 +54,14 @@
             </v-tab>
             </v-tabs>
     
-            <h2 class="tw-text-2xl sm:tw-text-3xl tw-font-bold tw-text-gray-900 tw-mt-4">
+            <h2 data-aos="fade-right" class="tw-text-2xl sm:tw-text-3xl tw-font-bold tw-text-gray-900 tw-mt-4">
             Какие требования для
             <span class="tw-text-[#7EE4C3]">{{ tabs[tab].toLowerCase() }}?</span>
             </h2>
         </div>
     
         <div
+		      data-aos="fade-left" data-aos-duration="1200"
             class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-6 tw-w-full md:tw-w-1/2"
             :style="{ minHeight: '400px' }"
         >

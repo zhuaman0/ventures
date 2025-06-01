@@ -16,16 +16,17 @@
 			<v-menu>
 				<template v-slot:activator="{ props }">
 				<v-btn variant="text" v-bind="props">
-					{{ locales[0].name }}
+					{{ currentLocaleName }}
 				</v-btn>
 				</template>
 				<v-list>
 				<v-list-item
-					v-for="(locale, index) in locales"
+				   @click="changeLocale(l.code)"
+					v-for="(l, index) in locales"
 					:key="index"
 					:value="index"
 				>
-					<v-list-item-title>{{ locale.name }}</v-list-item-title>
+					<v-list-item-title>{{ l.name }}</v-list-item-title>
 				</v-list-item>
 				</v-list>
 			</v-menu>
@@ -93,9 +94,28 @@
 		</header>
 	</template>
 	
-	<script setup>
-	const { locales } = useI18n()
+	
+	<script setup lang="ts">
+		import { useI18n } from '#imports';
+
+		const { locale } = useI18n()
 		const drawerOpen = ref(false)
+
+		const locales = [
+  { code: 'ru', name: 'Русский' },
+  { code: 'kz', name: 'Қазақша' }
+]
+
+const currentLocaleName = computed(() => {
+  const current = locales.find(l => l.code === locale.value)
+  return current ? current.name : ''
+})
+
+function changeLocale(code: any) {
+  locale.value = code
+  document.cookie = `currentLanguage=${code}; path=/`
+}
+
 	</script>
 	
 	<style scoped>

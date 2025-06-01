@@ -75,7 +75,7 @@ const prev = () => {
       <div class="tw-relative">
 
         <div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-start sm:tw-items-center tw-justify-between tw-gap-4 tw-mb-12">
-          <h2 class="tw-text-3xl sm:tw-text-4xl tw-font-bold tw-text-[#0D0B33]">
+          <h2 data-aos="fade-up" class="tw-text-3xl sm:tw-text-4xl tw-font-bold tw-text-[#0D0B33]">
             Возможности для стартапа
           </h2>
 
@@ -110,6 +110,7 @@ const prev = () => {
               class="tw-gap-6 tw-px-4"
             >
               <div
+				    data-aos="fade-up"
                 v-for="(card, i) in slide"
                 :key="i"
                 class="tw-bg-white tw-rounded-lg tw-shadow-md tw-text-start tw-flex tw-flex-col tw-justify-between tw-h-full tw-p-6"

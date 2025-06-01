@@ -36,11 +36,12 @@
         <div class="tw-max-w-[1250px] tw-mx-auto">
             <div class="tw-flex tw-flex-col lg:tw-flex-row tw-gap-8">
             <div class="tw-w-full lg:tw-w-1/2">
-                <h2 class="tw-text-[40px] tw-leading-[40px] tw-font-bold tw-mb-6 tw-text-[#181236]">Часто задаваемые <br/> вопросы</h2>
-                <p class="tw-text-[#181236] tw-mb-8 tw-text-[16px] tw-leading-[24px]">
+                <h2 data-aos="fade-right" class="tw-text-[40px] tw-leading-[40px] tw-font-bold tw-mb-6 tw-text-[#181236]">Часто задаваемые <br/> вопросы</h2>
+                <p data-aos="fade-right" data-aos-duration="1200" class="tw-text-[#181236] tw-mb-8 tw-text-[16px] tw-leading-[24px]">
                     Если вы не нашли ответа на свой вопрос, то можете <br/> написать в нашу службу поддержки
                 </p>
                 <h4 
+					 	  data-aos="fade-right" data-aos-duration="1600"
                     class="tw-border tw-border-[#228B6B] tw-text-[#228B6B] tw-font-semibold tw-text-[14px] tw-px-5 tw-py-3 tw-bg-white tw-inline-block" 
                     type="button">
                     Написать в службу поддержки
@@ -53,6 +54,7 @@
                     v-for="(item, index) in faqItems"
                     :key="index"
                     class=" tw-overflow-hidden"
+						  data-aos="fade-left"
                 >
                     <button
                     @click="toggleFAQ(index)"

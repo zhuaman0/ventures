@@ -46,13 +46,9 @@
 </template>
 
 <script setup lang="ts">
+import axios from 'axios';
 import { useServiceStore } from '~/stores/services';
 
- 
-definePageMeta({
-	layout: 'default',
-	name: 'login'
-})
 
 const serviceStore = useServiceStore();
 
@@ -61,15 +57,23 @@ const router = useRouter();
 const gmail = ref('')
 const password = ref('')
 
-const loginUser = () => {
-	if(gmail.value.trim() === '' && password.value.trim() === '') {
-		serviceStore.toast.error('Fill all gap')
-		return
-	}
-
-	if(gmail.value.includes('@')) {
-		serviceStore.toast.error('Write correct gmail')
-		return
+const loginUser = async() => {
+	try {
+		const response = await axios.post('https://zhervc-api.azurewebsites.net/api/Users/login', {
+			email: gmail.value,
+			password: password.value
+		},
+		{
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+   const token = response.data.token;
+   serviceStore.JWT_TOKEN = token;
+   localStorage.setItem('JWT_TOKEN', token);
+	router.push('/user/account/')
+	}catch(err) {
+		console.log(err)
 	}
 }
 
@@ -81,6 +85,7 @@ onMounted(() => {
 		serviceStore.modal.show = false
 	}
 })
+
 </script>
 
 <style scoped>

@@ -33,12 +33,18 @@ export default defineNuxtConfig({
 	'@/assets/scss/index.scss',
   ],
   i18n: {
+	vueI18n: 'locales/config.ts',
 	defaultLocale: 'ru',
 	locales: [
 		{ code: 'ru', name: 'Russian', file: 'ru.json' },
 		{ code: 'kz', name: 'Kazakh', file: 'kz.json' }
 	],
 	strategy: 'no_prefix',
-	langDir: 'locales/'
-  }
+	langDir: 'locales/',
+	detectBrowserLanguage: {
+		useCookie: true,
+		cookieKey: 'currentLanguage',
+		redirectOn: 'root'
+	}
+  },
 })
