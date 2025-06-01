@@ -1,7 +1,8 @@
 	<template>
 		<header class="tw-w-full tw-bg-white tw-py-4 tw-px-6 tw-shadow">
 		<div class="tw-max-w-7xl tw-mx-auto tw-flex tw-items-center tw-justify-between">
-			<div class="tw-font-bold tw-text-lg">LOGO</div>
+			<div class="tw-font-bold tw-text-lg">LOGO<Username/>
+			</div>
 	
 			<nav class="tw-hidden lg:tw-flex tw-items-center tw-gap-6 tw-text-sm tw-font-bold tw-text-gray-900">
 			<NuxtLink to="/" class="hover:tw-text-green-600">Стартапы</NuxtLink>
@@ -58,6 +59,7 @@
 				<NuxtLink to="/" class="hover:tw-text-green-600">Инвесторы</NuxtLink>
 				<NuxtLink to="/" class="hover:tw-text-green-600">Специалисты</NuxtLink>
 				<NuxtLink to="/" class="hover:tw-text-green-600">Новости</NuxtLink>
+				
 				</nav>
 	
 				<div class="tw-flex tw-flex-col tw-items-center tw-gap-3 tw-mt-auto">
@@ -85,15 +87,14 @@
 						Регистрация
 					</NuxtLink>
 				</div>
-
 			</div>
 			</div>
 		</Transition>
 		</header>
 	</template>
 	
-	<script setup lang="ts">
-		const { locales } = useI18n()
+	<script setup>
+	const { locales } = useI18n()
 		const drawerOpen = ref(false)
 	</script>
 	

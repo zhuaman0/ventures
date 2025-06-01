@@ -32,7 +32,7 @@
 </script>
     
 <template>
-    <div class=" tw-py-12 tw-px-0 sm:tw-px-6 lg:tw-px-10">
+    <div class="tw-py-12 tw-px-4 sm:tw-px-6 lg:tw-px-10">
         <div class="tw-max-w-[1250px] tw-mx-auto">
             <div class="tw-flex tw-flex-col lg:tw-flex-row tw-gap-8">
             <div class="tw-w-full lg:tw-w-1/2">
