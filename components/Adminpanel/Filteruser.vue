@@ -1,88 +1,105 @@
-<template>
-    <div class="tw-space-y-6">
-        <div class="tw-flex tw-justify-start tw-items-center tw-gap-4 tw-mb-6">
-            <h2 class="tw-text-xl tw-font-bold">Фильтровать по</h2>
-            <button class="tw-bg-[#36CE9F] tw-text-white tw-px-4 tw-py-2 tw-rounded-lg">
-            + Добавить пользователя
+    <template>
+        <div class="tw-space-y-6">
+        <div class="tw-flex tw-justify-start tw-items-start tw-gap-2">
+            <button class="tw-flex tw-items-center tw-gap-4 tw-bg-white tw-border tw-border-gray-300 tw-text-gray-700 tw-px-4 tw-py-2 tw-rounded-lg hover:tw-bg-gray-50">
+            <svg class="tw-w-4 tw-h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v16a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"></path>
+            </svg>
+            Фильтровать по
             </button>
-        </div>
-
-    <div class="tw-flex tw-flex-wrap tw-gap-2 tw-mb-6">
-        <button 
-            v-for="filter in filters"
-            :key="filter"
-            class="tw-bg-gray-100 tw-px-4 tw-py-2 tw-rounded-lg hover:tw-bg-gray-200"
-        >
-        {{ filter }}
-        </button>
-    </div>
-
-    <div class="tw-space-y-4">
-        <div class="tw-bg-white tw-p-4 tw-rounded-lg tw-shadow-sm">
-        <div class="tw-flex tw-justify-between tw-items-start">
-            <div>
-                <h3 class="tw-font-bold">SmartMonitor</h3>
-                <p class="tw-text-gray-600">smartHSE@gmail.com</p>
-            </div>
-            <div class="tw-flex tw-flex-wrap tw-gap-2">
-                <span class="tw-bg-green-100 tw-text-green-800 tw-px-2 tw-py-1 tw-rounded-full tw-text-xs">
-                    Активен
-                </span>
-                <span class="tw-bg-blue-100 tw-text-blue-800 tw-px-2 tw-py-1 tw-rounded-full tw-text-xs">
-                    Онлайн
-                </span>
-                <span class="tw-bg-green-100 tw-text-green-800 tw-px-2 tw-py-1 tw-rounded-full tw-text-xs">
-                    Одобрен
-                </span>
-                <span class="tw-bg-gray-100 tw-text-gray-800 tw-px-2 tw-py-1 tw-rounded-full tw-text-xs">
-                    Венчурная компания
-                </span>
-            </div>
-            </div>
-        </div>
-
-        <div class="tw-bg-white tw-p-4 tw-rounded-lg tw-shadow-sm">
-            <div class="tw-flex tw-justify-between tw-items-start">
-            <div>
-                <h3 class="tw-font-bold">MongolStartup</h3>
-                <p class="tw-text-gray-600">mongols@gmail.com</p>
-                </div>
-            <div class="tw-flex tw-flex-wrap tw-gap-2">
-                <span class="tw-bg-red-100 tw-text-red-800 tw-px-2 tw-py-1 tw-rounded-full tw-text-xs">
-                    Не активен
-                </span>
-                <span class="tw-bg-gray-100 tw-text-gray-800 tw-px-2 tw-py-1 tw-rounded-full tw-text-xs">
-                    Офлайн
-                </span>
-                <span class="tw-bg-red-100 tw-text-red-800 tw-px-2 tw-py-1 tw-rounded-full tw-text-xs">
-                    Не одобрен
-                </span>
-                <span class="tw-bg-gray-100 tw-text-gray-800 tw-px-2 tw-py-1 tw-rounded-full tw-text-xs">
-                    Бизнес-ангел
-                </span>
-            </div>
-        </div>
-    </div>
-    </div>
-
-        <div class="tw-flex tw-justify-between tw-items-center tw-mt-6">
-            <button class="tw-px-4 tw-py-2 tw-border tw-rounded-lg">
-                Previous
+            <div class="tw-flex tw-items-center tw-gap-4">
+            <button class="tw-bg-[#3D3BFB] tw-text-white tw-px-4 tw-py-2 tw-rounded-lg hover:tw-bg-[#2f2cf1]">
+                + Добавить пользователя
             </button>
+            <input type="text" placeholder="Поиск" class="tw-border tw-border-gray-300 tw-rounded-lg tw-px-3 tw-py-2 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-[#3D3BFB] tw-ml-5" />
+            </div>
+        </div>
+    
+        <div class="tw-bg-white tw-rounded-lg tw-shadow-sm">
+            <table class="tw-w-full tw-text-left tw-text-sm">
+            <thead class="tw-bg-gray-50">
+                <tr>
+                <th class="tw-p-4">
+                    <input type="checkbox" class="tw-w-4 tw-h-4 tw-rounded" />
+                </th>
+                <th class="tw-p-4">Пользователь</th>
+                <th class="tw-p-4">Статус</th>
+                <th class="tw-p-4">Статус действия</th>
+                <th class="tw-p-4">Статус заявки</th>
+                <th class="tw-p-4">Роль</th>
+                <th class="tw-p-4">Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tw-border-b">
+                <td class="tw-p-4">
+                    <input type="checkbox" class="tw-w-4 tw-h-4 tw-rounded" />
+                </td>
+                <td class="tw-p-4 tw-flex tw-items-center tw-gap-2">
+                    <img src="https://i.pravatar.cc/32" class="tw-w-8 tw-h-8 tw-rounded-full" />
+                    <div>
+                    <div class="tw-font-medium">SmartMonitor</div>
+                    <div class="tw-text-gray-500">smartHSE@gmail.com</div>
+                    </div>
+                </td>
+                <td class="tw-p-4 tw-text-green-600">Активен</td>
+                <td class="tw-p-4 tw-text-green-600">Онлайн</td>
+                <td class="tw-p-4 tw-text-green-600">Одобрен</td>
+                <td class="tw-p-4">Венчурная компания</td>
+                <td class="tw-p-4 tw-flex tw-gap-2">
+                    <button>
+                    <svg class="tw-w-4 tw-h-4 tw-text-gray-500 hover:tw-text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    </button>
+                    <button>
+                    <svg class="tw-w-4 tw-h-4 tw-text-gray-500 hover:tw-text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    </button>
+                </td>
+                </tr>
+    
+                <!-- Пользователь 2 -->
+                <tr class="tw-border-b">
+                <td class="tw-p-4">
+                    <input type="checkbox" class="tw-w-4 tw-h-4 tw-rounded" />
+                </td>
+                <td class="tw-p-4 tw-flex tw-items-center tw-gap-2">
+                    <img src="https://i.pravatar.cc/32?img=2" class="tw-w-8 tw-h-8 tw-rounded-full" />
+                    <div>
+                    <div class="tw-font-medium">MongolStartup</div>
+                    <div class="tw-text-gray-500">mongols@gmail.com</div>
+                    </div>
+                </td>
+                <td class="tw-p-4 tw-text-orange-500">Не активен</td>
+                <td class="tw-p-4 tw-text-orange-500">Офлайн</td>
+                <td class="tw-p-4 tw-text-orange-500">Не одобрен</td>
+                <td class="tw-p-4">Бизнес-ангел</td>
+                <td class="tw-p-4 tw-flex tw-gap-2">
+                    <button>
+                    <svg class="tw-w-4 tw-h-4 tw-text-gray-500 hover:tw-text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    </button>
+                    <button>
+                    <svg class="tw-w-4 tw-h-4 tw-text-gray-500 hover:tw-text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    </button>
+                </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    
+        <div class="tw-flex tw-justify-between tw-items-center">
+            <button class="tw-px-4 tw-py-2 tw-border tw-rounded-lg">Previous</button>
             <span>Page 1 of 10</span>
-            <button class="tw-px-4 tw-py-2 tw-border tw-rounded-lg">
-                Next
-            </button>
+            <button class="tw-px-4 tw-py-2 tw-border tw-rounded-lg">Next</button>
         </div>
-    </div>
-</template>
-
-<script setup>
-    const filters = [
-    'Пользователь',
-    'Статус',
-    'Статус действия',
-    'Статус заявки',
-    'Роль'
-    ]; 
-</script>
+        </div>
+    </template>
+    
+    <script setup>
+    </script>
