@@ -7,7 +7,7 @@
         class="tw-text-inherit tw-p-0 tw-normal-case tw-font-medium"
       >
         <div class="tw-flex tw-items-center tw-gap-1">
-          <span>{{ userName }}</span>
+          <span>{{ serviceStore.user.fullname }}</span>
           <v-icon size="20" class="tw-text-current">mdi-chevron-down</v-icon>
         </div>
       </v-btn>
@@ -17,7 +17,7 @@
       <v-list density="compact" class="tw-py-0">
         <v-list-item class="tw-pointer-events-none tw-opacity-80 tw-min-h-[36px]">
           <v-list-item-title class="tw-text-xs tw-text-gray-500">
-            {{ userEmail }}
+            {{ serviceStore.user.email }}
           </v-list-item-title>
         </v-list-item>
 
@@ -49,11 +49,15 @@
 import FrameCopy3 from '@/assets/icons/user/Frame_copy3.svg'
 import FrameCopy2 from '@/assets/icons/user/Frame_copy2.svg'
 import FrameCopy1 from '@/assets/icons/user/Frame_copy1.svg'
+import { useServiceStore } from '~/stores/services'
+import userService from '~/api/services/userService';
+const serviceStore = useServiceStore();
+const router = useRouter()
 
 const props = defineProps({
   userName: {
     type: String,
-    default: 'User Name'
+    default: 'Aman Zhumagali'
   },
   userEmail: {
     type: String,
@@ -94,7 +98,12 @@ const getIconPath = (iconName) => {
 }
 
 const handleItemClick = (action) => {
-  emit('item-click', action)
+	if(action === 'logout') {
+		serviceStore.clearUser()
+		router.push('/auth/login')
+	}else if(action === 'settings') {
+		router.push('/user/account')
+	}
 }
 </script>
 

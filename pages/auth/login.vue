@@ -70,7 +70,7 @@ const loginUser = async() => {
 		})
    const token = response.data.token;
    serviceStore.JWT_TOKEN = token;
-   localStorage.setItem('JWT_TOKEN', token);
+	serviceStore.setToken(token)
 	router.push('/user/account/')
 	}catch(err) {
 		console.log(err)
@@ -78,7 +78,7 @@ const loginUser = async() => {
 }
 
 onMounted(() => {
-	serviceStore.modal.show = true
+	serviceStore.modal.show = false
 	serviceStore.modal.header = 'Hi baby',
 	serviceStore.modal.buttonText = 'Click'
 	serviceStore.modal.onClick = () => {

@@ -23,7 +23,7 @@ export type ServiceStore = {
 }
 
 export interface User  {
-	email: string,
+	email: string, 
 	fullname: string,
 	phonenumber: string,
 	role: string

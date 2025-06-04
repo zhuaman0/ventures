@@ -5,12 +5,12 @@
 		<div class="tw-max-w-[600px] tw-bg-white tw-p-4">
 			<div class="tw-flex tw-justify-between tw-items-center tw-mb-[20px]">
 				<h1 class="tw-font-bold tw-text-[20px]">Личные данные</h1>
-				<img src="/assets/icons/pencil.svg" alt="">
+				<img @click="$router.push('/user/edit')" src="/assets/icons/pencil.svg" alt="">
 			</div>
 			<ul class="tw-grid tw-grid-cols-2 tw-gap-5">
 				<li>
 					<h1 class="tw-text-[14px] tw-text-[#767A87]">Имя и фамилия</h1>
-					<p class="tw-text-[16px] tw-text-[#181236]">{{ serviceStore.user.fullname }}</p>
+					<p  class="tw-text-[16px] tw-text-[#181236]">{{ serviceStore.user.fullname }}</p>
 				</li>
 				<li>
 					<h1 class="tw-text-[14px] tw-text-[#767A87]">Номер телефона</h1>
@@ -32,6 +32,11 @@
 <script setup lang="ts">
 import axios from 'axios';
 import { useServiceStore } from '~/stores/services';
+
+definePageMeta({
+	layout: 'default',
+	middleware: 'auth'
+})
 
 const breadcrumbs = [
 { 

@@ -39,7 +39,7 @@ onMounted(() => {
 		if(time.value > 0) {
 			time.value--;
 		}else {
-			serviceStore.modal.show = true;
+			serviceStore.modal.show = false;
 			serviceStore.modal.header = 'Время истекло. Хотите отправить код снова?';
 			serviceStore.modal.buttonText = 'Да'
 	      serviceStore.modal.onClick = () => {

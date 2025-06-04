@@ -19,6 +19,10 @@
 import { useServiceStore } from '~/stores/services';
 
 const serviceStore = useServiceStore();
+
+onMounted(() => {
+	serviceStore.getUserInfo()
+})
 </script>
 
 <style scoped>

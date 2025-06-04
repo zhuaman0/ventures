@@ -21,4 +21,8 @@
 <script lang="ts" setup>
 import { useServiceStore } from './stores/services';
 const serviceStore = useServiceStore();
+
+onMounted(() => {
+	serviceStore.laodToken()
+})
 </script>
