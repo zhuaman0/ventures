@@ -1,7 +1,8 @@
 	<template>
 		<header class="tw-w-full tw-bg-white tw-py-4 tw-px-6 tw-shadow">
 		<div class="tw-max-w-7xl tw-mx-auto tw-flex tw-items-center tw-justify-between">
-			<div @click="$router.push('/')" class="tw-font-bold tw-text-lg">LOGO
+			<div @click="$router.push('/')" class="tw-font-bold tw-text-lg">
+			<img src="@/assets/icons/header_logo.svg" alt="">
 			</div>
 	
 			<nav class="tw-hidden lg:tw-flex tw-items-center tw-gap-6 tw-text-sm tw-font-bold tw-text-gray-900">
@@ -21,13 +22,13 @@
 				</template>
 				<v-list>
 				<v-list-item
-				   @click="changeLocale(l.code)"
+				@click="changeLocale(l.code)"
 					v-for="(l, index) in locales"
 					:key="index"
 					:value="index"
 				>
 					<v-list-item-title>
-  <span class="tw-mr-2">{{ l.flag }}</span> {{ l.name }}
+<span class="tw-mr-2">{{ l.flag }}</span> {{ l.name }}
 </v-list-item-title>
 				</v-list-item>
 				</v-list>
@@ -53,7 +54,8 @@
 			<div v-if="drawerOpen" class="tw-fixed tw-inset-0 tw-z-50 tw-bg-black/50" @click.self="drawerOpen = false">
 			<div class="tw-fixed tw-right-0 tw-top-0 tw-w-80 tw-h-full tw-bg-white tw-p-6 tw-flex tw-flex-col ">
 				<div class="tw-flex tw-justify-between tw-items-center tw-mb-6">
-				<div class="tw-font-bold tw-text-lg">LOGO</div>
+				<div class="tw-font-bold tw-text-lg">			<img src="@/assets/icons/header_logo.svg" alt="">
+				</div>
 				<Icon name="material-symbols-light:close" class="tw-text-2xl tw-cursor-pointer" @click="drawerOpen = false" />
 				</div>
 	
@@ -122,6 +124,7 @@ const currentLocaleName = computed(() => {
 function changeLocale(code: any) {
   locale.value = code
   document.cookie = `currentLanguage=${code}; path=/`
+  window.location.reload()
 }
 
 	</script>

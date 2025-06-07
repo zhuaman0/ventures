@@ -61,7 +61,7 @@
         </div>
     
         <div
-		      data-aos="fade-left" data-aos-duration="1200"
+		    data-aos="fade-left" data-aos-duration="1200"
             class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-6 tw-w-full md:tw-w-1/2"
             :style="{ minHeight: '400px' }"
         >

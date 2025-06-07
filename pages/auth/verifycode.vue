@@ -12,7 +12,7 @@
 		Отправить новый код через {{ time }} сек
 	 </p>
 	 <div class="tw-mt-[20px]" :class="[otp.length === 6 ? 'tw-text-white' : 'tw-text-gray-600']">
-		<button @click="checkVerify" :class="[otp.length === 6 ? 'tw-bg-emerald-400' : 'tw-bg-[#D2D4DB]']" type="button" class="tw-bg-[#D2D4DB] tw-w-full tw-py-[16px] tw-px-[72px] tw-text-[#9296A1] tw-font-bold tw-text-[16px]">Подтвердить</button>
+		<button @click="checkVerify" :class="[otp.length === 6 ? 'tw-bg-[#36CE9F]' : 'tw-bg-[#D2D4DB]']" type="button" class="tw-bg-[#36CE9F] tw-w-full tw-py-[16px] tw-px-[72px] tw-text-[#9296A1] tw-font-bold tw-text-[16px]">Подтвердить</button>
 	 </div>
 		</div>
 	</div>

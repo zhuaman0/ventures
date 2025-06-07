@@ -5,9 +5,14 @@
 					<img class="tw-mb-[10px]" :src="card.img" :alt="card.title">
 					<h1 class="tw-text-[24px] tw-font-[600] tw-mb-[10px]">{{ card.title }}</h1>
 					<p class="tw-text-[16px] tw-leading-[20px] tw-mb-[10px]">{{ card.para }}</p>
-					<div class="tw-border-[2px] tw-border-[#36CE9F]">
-						<button class="tw-text-[#36CE9F] tw-font-[600] tw-p-2" @click="typeOfRegistration(card.title)">Зарегистрироваться</button>
-					</div>
+					<div class="tw-border-[2px] tw-border-[#36CE9F] tw-w-[220px] tw-h-[50px]">
+						<button
+							class="tw-text-[#36CE9F] tw-font-[600] tw-p-2 tw-w-full tw-h-full"
+							@click="typeOfRegistration(card.title)"
+						>
+							Зарегистрироваться
+						</button>
+						</div>
 			</li>
 		</ul>
 	</div>

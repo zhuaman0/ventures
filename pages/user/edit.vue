@@ -1,55 +1,72 @@
-<template>
-	<div class="tw-max-w-7xl tw-mx-auto tw-mt-[20px] tw-mb-[90px]">
-		<RouteRouterPath :breadcrumbs="breadcrumbs"/>
-		<h1 class="tw-font-bold tw-text-[32px] tw-my-[15px]">Редактировать личные данные</h1>
-		<div class="tw-max-w-[600px] tw-bg-white tw-p-4">
-			<div class="tw-flex tw-justify-between tw-items-center tw-mb-[20px]">
-				<h1 class="tw-font-bold tw-text-[20px]">Личные данные</h1>
-				<img @click="$router.push('/user/edit')" src="/assets/icons/pencil.svg" alt="">
+	<template>
+		<div class="tw-max-w-7xl tw-mx-auto tw-px-4 sm:tw-px-6 lg:tw-px-8 tw-mt-5 tw-mb-[90px]">
+		<RouteRouterPath :breadcrumbs="breadcrumbs" />
+	
+		<h1 class="tw-font-bold tw-text-[28px] sm:tw-text-[32px] tw-my-5">
+			Редактировать личные данные
+		</h1>
+	
+		<div class="tw-max-w-2xl tw-bg-white tw-p-5 tw-rounded-lg tw-shadow-sm">
+			<div class="tw-flex tw-justify-between tw-items-center tw-mb-6">
+			<h2 class="tw-font-bold tw-text-[18px] sm:tw-text-[20px]">Личные данные</h2>
+			<img
+				@click="$router.push('/user/edit')"
+				src="/assets/icons/pencil.svg"
+				alt="Редактировать"
+				class="tw-w-5 tw-h-5 tw-cursor-pointer"
+			/>
 			</div>
-			<ul class="tw-grid tw-grid-cols-1 tw-gap-5">
-				<li>
-					<h1 class="tw-text-[14px] tw-text-[#767A87]">Имя и фамилия</h1>
-					<v-text-field
-					        class="tw-w-full tw-mt-2"
-					        id="gmail"
-                       placeholder=""
-                       variant="outlined"
-							  autocomplete="off"
-							  v-model="form.fullname"
-               ></v-text-field>
-				</li>
-				<li>
-					<h1 class="tw-text-[14px] tw-text-[#767A87]">Электронная почта</h1>
-					<v-text-field
-					        class="tw-w-full tw-mt-2"
-					        id="gmail"
-                       placeholder=""
-                       variant="outlined"
-							  autocomplete="off"
-							  v-model="form.email"
-               ></v-text-field>
-				</li>
-				<li>
-					<h1 class="tw-text-[14px] tw-text-[#767A87]">Номер телефона</h1>
-					<v-text-field
-					        class="tw-w-full tw-mt-2"
-					        id="gmail"
-                       placeholder=""
-							  v-maska="'+7 (###) ###-##-##'"
-                       variant="outlined"
-							  autocomplete="off"
-							  v-model="form.phonenumber"
-               ></v-text-field>
-				</li>
+	
+			<ul class="tw-grid tw-grid-cols-1 tw-gap-6">
+			<li>
+				<h3 class="tw-text-[14px] tw-text-[#767A87]">Имя и фамилия</h3>
+				<v-text-field
+				class="tw-w-full tw-mt-2"
+				variant="outlined"
+				autocomplete="off"
+				v-model="form.fullname"
+				/>
+			</li>
+			<li>
+				<h3 class="tw-text-[14px] tw-text-[#767A87]">Электронная почта</h3>
+				<v-text-field
+				class="tw-w-full tw-mt-2"
+				variant="outlined"
+				autocomplete="off"
+				v-model="form.email"
+				/>
+			</li>
+			<li>
+				<h3 class="tw-text-[14px] tw-text-[#767A87]">Номер телефона</h3>
+				<v-text-field
+				class="tw-w-full tw-mt-2"
+				variant="outlined"
+				autocomplete="off"
+				v-maska="'+7 (###) ###-##-##'"
+				v-model="form.phonenumber"
+				/>
+			</li>
 			</ul>
 		</div>
-		<div class="tw-max-w-[600px] tw-mt-6 tw-flex tw-justify-between tw-items-center tw-py-4 tw-px-2">
-			<button class="tw-w-full tw-text-center tw-py-3">Отменить</button>
-			<button @click="changeProfileUser" class="tw-w-full tw-bg-[#36CE9F] tw-text-center tw-text-white tw-py-3">Сохранить изменения</button>
+	
+		<div
+			class="tw-max-w-2xl tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 tw-gap-4 tw-mt-6"
+		>
+			<button
+			class="tw-w-full tw-text-center tw-py-3 tw-bg-gray-100 hover:tw-bg-gray-200 tw-text-[#181236] tw-font-[400]"
+			>
+			Отменить
+			</button>
+			<button
+			@click="changeProfileUser"
+			class="tw-w-full tw-bg-[#36CE9F] hover:tw-bg-[#2dbb8c] tw-text-white tw-text-center tw-py-3 "
+			>
+			Сохранить изменения
+			</button>
 		</div>
-	</div>
-</template>
+		</div>
+	</template>
+	
 
 <script setup lang="ts">
 import axios from 'axios';

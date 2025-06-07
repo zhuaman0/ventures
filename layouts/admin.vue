@@ -1,5 +1,6 @@
 <template>
   <div class="tw-flex tw-min-h-screen">
+  
     <AdminSidebar />
 
     <div class="tw-flex-1 tw-bg-gray-50">

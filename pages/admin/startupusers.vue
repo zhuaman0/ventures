@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import { useI18n } from 'vue-i18n'
-import Userss from '~/components/Adminpanel/Userss.vue'
+import UserStartup from '~/components/Adminpanel/UserStartup.vue'
 
 const { t } = useI18n()
 
@@ -19,13 +19,11 @@ useHead({
 definePageMeta({
   layout: 'admin'
 })
-
-
 </script>
 
 
 <template>
   <div class="tw-mt-6">
-    <Userss />
+    <UserStartup />
   </div>
 </template>

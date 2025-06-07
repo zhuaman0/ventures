@@ -4,7 +4,9 @@
 		
 		<div class="tw-flex tw-flex-col lg:tw-flex-row md:tw-flex-row tw-justify-between tw-space-y-8 md:tw-space-y-0">
 			<div class="tw-space-y-4">
-			<div class="tw-text-xl tw-font-bold">{{ $t('footer.logo') }}</div>
+			<div class="tw-text-xl tw-font-bold">
+			<img src="@/assets/icons/footer_logo.svg" alt="">
+			</div>
 		</div>
 
 		<div class="tw-flex tw-flex-wrap tw-gap-5 tw-text-sm tw-font-bold">

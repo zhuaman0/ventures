@@ -7443,6 +7443,11 @@ vuetify@^3.7.0:
   resolved "https://registry.npmjs.org/vuetify/-/vuetify-3.8.5.tgz"
   integrity sha512-W/mTaNDyO6NRqAQmnkMUn9TYvRb//BPF/vk7h3+2xNJOyI9ev90JmYjrihOtb+6QDrB79wVUH0Y+0OjYK73GsA==
 
+vuetify@^3.8.0-beta.0:
+  version "3.8.0-beta.0"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-3.8.0-beta.0.tgz#dd615c1a93131096d19df66baa6fba019ce77cd4"
+  integrity sha512-wixr3ybX25yMmhnd43XxnChuaGDnz0KuKY2ttvbrdojtkmMqNkDssIM0qty2L7PDy1xc2wFuRTfm20hyayldYQ==
+
 web-streams-polyfill@^3.0.3:
   version "3.3.3"
   resolved "https://registry.npmjs.org/web-streams-polyfill/-/web-streams-polyfill-3.3.3.tgz"

@@ -1,34 +1,47 @@
 <template>
-	<div class="tw-max-w-7xl tw-mx-auto tw-mt-[20px] tw-mb-[90px]">
-		<RouteRouterPath :breadcrumbs="breadcrumbs"/>
-		<h1 class="tw-font-bold tw-text-[32px] tw-my-[15px]">Профиль</h1>
-		<div class="tw-max-w-[600px] tw-bg-white tw-p-4">
-			<div class="tw-flex tw-justify-between tw-items-center tw-mb-[20px]">
-				<h1 class="tw-font-bold tw-text-[20px]">Личные данные</h1>
-				<img @click="$router.push('/user/edit')" src="/assets/icons/pencil.svg" alt="">
-			</div>
-			<ul class="tw-grid tw-grid-cols-2 tw-gap-5">
-				<li>
-					<h1 class="tw-text-[14px] tw-text-[#767A87]">Имя и фамилия</h1>
-					<p  class="tw-text-[16px] tw-text-[#181236]">{{ serviceStore.user.fullname }}</p>
-				</li>
-				<li>
-					<h1 class="tw-text-[14px] tw-text-[#767A87]">Номер телефона</h1>
-					<p class="tw-text-[16px] tw-text-[#181236]">{{ serviceStore.user.phonenumber }}</p>
-				</li>
-				<li>
-					<h1 class="tw-text-[14px] tw-text-[#767A87]">Электронная почта</h1>
-					<p class="tw-text-[16px] tw-text-[#181236]">{{ serviceStore.user.email }}</p>
-				</li>
-			</ul>
+	<div class="tw-max-w-7xl tw-mx-auto tw-px-4 sm:tw-px-6 lg:tw-px-8 tw-mt-5 tw-mb-[90px]">
+	  <RouteRouterPath :breadcrumbs="breadcrumbs" />
+  
+	  <h1 class="tw-font-bold tw-text-[28px] sm:tw-text-[32px] tw-my-5">Профиль</h1>
+  
+	  <div class="tw-max-w-2xl tw-bg-white tw-p-5 tw-rounded-lg tw-shadow-sm">
+		<div class="tw-flex tw-justify-between tw-items-center tw-mb-6">
+		  <h2 class="tw-font-bold tw-text-[18px] sm:tw-text-[20px]">Личные данные</h2>
+		  <img
+			@click="$router.push('/user/edit')"
+			src="/assets/icons/pencil.svg"
+			alt="Редактировать"
+			class="tw-cursor-pointer tw-w-5 tw-h-5"
+		  />
 		</div>
-		<div class="tw-bg-white tw-max-w-[600px] tw-mt-6 tw-flex tw-justify-between tw-items-center tw-py-4 tw-px-2">
-			<h1 class="tw-text-[#181236] tw-font-bold tw-text-[20pxx]">Изменить пароль</h1>
-			<Icon name="mdi:arrow-right" />
-		</div>
+  
+		<ul class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 tw-gap-6">
+		  <li>
+			<h3 class="tw-text-[14px] tw-text-[#767A87]">Имя и фамилия</h3>
+			<p class="tw-text-[16px] tw-text-[#181236]">{{ serviceStore.user.fullname }}</p>
+		  </li>
+		  <li>
+			<h3 class="tw-text-[14px] tw-text-[#767A87]">Номер телефона</h3>
+			<p class="tw-text-[16px] tw-text-[#181236]">{{ serviceStore.user.phonenumber }}</p>
+		  </li>
+		  <li class="sm:tw-col-span-2">
+			<h3 class="tw-text-[14px] tw-text-[#767A87]">Электронная почта</h3>
+			<p class="tw-text-[16px] tw-text-[#181236]">{{ serviceStore.user.email }}</p>
+		  </li>
+		</ul>
+	  </div>
+  
+	  <div
+		class="tw-bg-white tw-max-w-2xl tw-mt-6 tw-flex tw-justify-between tw-items-center tw-py-4 tw-px-4 tw-rounded-lg tw-shadow-sm tw-cursor-pointer hover:tw-bg-gray-50"
+	  >
+		<h2 class="tw-text-[#181236] tw-font-bold tw-text-[16px] sm:tw-text-[18px]">
+		  Изменить пароль
+		</h2>
+		<Icon name="mdi:arrow-right" class="tw-text-xl" />
+	  </div>
 	</div>
-</template>
-
+  </template>
+  
 <script setup lang="ts">
 import axios from 'axios';
 import { useServiceStore } from '~/stores/services';

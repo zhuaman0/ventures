@@ -1,6 +1,6 @@
 <template>
   <div class="tw-px-4 sm:tw-px-10 md:tw-px-40 tw-py-12">
-    <h2 class="tw-text-xl tw-font-bold tw-mb-6">Редактирование раздела</h2>
+    <h2 class="tw-text-[32px] tw-font-bold tw-mb-6">Редактирование раздела</h2>
 
     <v-form>
       <div class="tw-grid tw-grid-cols-1 md:tw-max-w-[600px] tw-bg-white tw-p-8">

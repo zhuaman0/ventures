@@ -1,25 +1,33 @@
 <template>
-	<div class="tw-max-w-7xl tw-mx-auto tw-mt-[20px] tw-mb-[90px]">
-		<div v-if="categoriesCard">
-			<RouteRouterPath :breadcrumbs="breadcrumbs"/>
-			<h1 class="tw-text-[32px] tw-ml-3 tw-font-[600] tw-leading-[120%]">Выберите роль для регистрации</h1>
-			<CardRegistration @typeRegistration="typeRegistration" :cards="cards"/>
-			<div class="tw-my-[10px] tw-flex">
-				<p>Уже зарегистрированы?</p>
-				<a class="tw-text-[#36CE9F]" href="/auth/login">Войти</a>
-			</div>
-		</div>
-		<Transition
-  			enter-active-class="animate__animated animate__fadeIn"
-  			leave-active-class="animate__animated animate__fadeOut"
+	<div class="tw-w-full tw-max-w-7xl tw-mx-auto tw-px-4 sm:tw-px-6 lg:tw-px-8 tw-mt-5 tw-mb-[90px]">
+	  <div v-if="categoriesCard">
+		<RouteRouterPath :breadcrumbs="breadcrumbs" />
+  
+		<h1
+		  class="tw-text-[24px] sm:tw-text-[28px] lg:tw-text-[32px] tw-font-semibold tw-leading-tight tw-my-6"
 		>
-  			<div v-if="registrationForm">
-  			  <FormRegistration v-if="registrationForm" :type="selectedType"/>
-  			</div>
-		</Transition>
+		  Выберите роль для регистрации
+		</h1>
+  
+		<CardRegistration @typeRegistration="typeRegistration" :cards="cards" />
+  
+		<div class="tw-my-4 tw-flex tw-flex-wrap tw-items-center tw-gap-2 tw-text-sm sm:tw-text-base">
+		  <p>Уже зарегистрированы?</p>
+		  <a class="tw-text-[#36CE9F] hover:tw-underline" href="/auth/login">Войти</a>
+		</div>
+	  </div>
+  
+	  <Transition
+		enter-active-class="animate__animated animate__fadeIn"
+		leave-active-class="animate__animated animate__fadeOut"
+	  >
+		<div v-if="registrationForm">
+		  <FormRegistration :type="selectedType" />
+		</div>
+	  </Transition>
 	</div>
-</template>
-
+  </template>
+  
 <script setup lang="ts">
 import FormRegistration from '~/components/FormRegistration.vue';
 import { Link, RouteRouterPath } from '#components';

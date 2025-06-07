@@ -226,7 +226,7 @@
 </div>
 
 					<div class="tw-mb-4">
-						<button type="button" @click="registerAnketa" class="tw-bg-[#36CE9F] tw-text-white tw-font-bold tw-w-full tw-py-4">Зарегистрироваться</button>
+						<button type="button" @click="registerAnketa" class="tw-bg-[#36CE9F] tw-text-white tw-font-bold tw-w-full tw-py-4"><p class="tw-text-white">Зарегистрироваться</p></button>
 					</div>
 				</form>
 			</div>

@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import { useI18n } from 'vue-i18n'
-import Userss from '~/components/Adminpanel/Userss.vue'
+import UserInvestor from '~/components/Adminpanel/UserInvestor.vue'
 
 const { t } = useI18n()
 
@@ -20,12 +20,11 @@ definePageMeta({
   layout: 'admin'
 })
 
-
 </script>
 
 
 <template>
   <div class="tw-mt-6">
-    <Userss />
+    <UserInvestor />
   </div>
 </template>
