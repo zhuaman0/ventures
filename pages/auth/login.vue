@@ -5,41 +5,41 @@
 			<h1 class="tw-text-[#000] tw-text-[24px] tw-font-bold">{{ $t('login.title') }}</h1>
 			</div>
 			<div class="tw-px-4 tw-py-4 tw-w-full">
-			<form class="tw-w-full" action="">
-				<div class="tw-mb-4">
-				<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">{{ $t('login.emailLabel') }}</label>
-				<v-text-field
-					v-model="gmail"
-					class="tw-w-full tw-mt-2"
-					id="gmail"
-					:placeholder="$t('login.emailPlaceholder')"
-					variant="outlined"
-					autocomplete="off"
-				></v-text-field>
+				<form class="tw-w-full" action="">
+					<div class="tw-mb-4">
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Электронная почта</label>
+					   <v-text-field
+						     v-model="gmail"
+					        class="tw-w-full tw-mt-2"
+					        id="gmail"
+                       placeholder="name@example.com"
+                       variant="outlined"
+							  autocomplete="off"
+                  ></v-text-field>
+					</div>
+					<div class="tw-mb-4">
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="password">Электронная почта</label>
+						<v-text-field
+						  v-model="password"
+					     class="tw-mt-2"
+                    :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+                    :type="visible ? 'text' : 'password'"
+                    placeholder="Введите пароль"
+                    variant="outlined"
+                    @click:append-inner="visible = !visible"
+						  autocomplete="new-password"
+                  ></v-text-field>
+					</div>
+				</form>
+				<div class="tw-flex tw-flex-row tw-justify-between tw-items-center tw-mb-4">
+					<v-checkbox color="green" label="Запомнить меня"></v-checkbox>
+					<span class="tw-text-[#36CE9F] tw-font-bold tw-text-[16px] tw-leading-[20px]">Забыл пароль?</span>
 				</div>
-				<div class="tw-mb-4">
-				<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="password">{{ $t('login.passwordLabel') }}</label>
-				<v-text-field
-					v-model="password"
-					class="tw-mt-2"
-					:append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
-					:type="visible ? 'text' : 'password'"
-					:placeholder="$t('login.passwordPlaceholder')"
-					variant="outlined"
-					@click:append-inner="visible = !visible"
-					autocomplete="new-password"
-				></v-text-field>
+				<button @click="loginUser" class="tw-w-full tw-bg-[#36CE9F] tw-text-[#fff] tw-h-[48px] tw-mb-4">Войти</button>
+				<div class="tw-flex tw-items-center tw-justify-center">
+					<p class="tw-text-[#767A87] tw-text-[16px]">Нет аккаунта?</p>
+					<a class="tw-text-[#36CE9F] tw-text-[16px]" href="/auth/registration">Зарегистрироваться</a>
 				</div>
-			</form>
-			<div class="tw-flex tw-flex-row tw-justify-between tw-items-center tw-mb-4">
-				<v-checkbox color="green" :label="$t('login.rememberMe')"></v-checkbox>
-				<span class="tw-text-[#36CE9F] tw-font-bold tw-text-[16px] tw-leading-[20px]">{{ $t('login.forgotPassword') }}</span>
-			</div>
-			<button @click="loginUser" class="tw-w-full tw-bg-[#36CE9F] tw-text-[#fff] tw-h-[48px] tw-mb-4">{{ $t('login.loginButton') }}</button>
-			<div class="tw-flex tw-items-center tw-justify-center">
-				<p class="tw-text-[#767A87] tw-text-[16px]">{{ $t('login.noAccount') }}</p>
-				<a class="tw-text-[#36CE9F] tw-text-[16px]" href="/auth/registration">{{ $t('login.register') }}</a>
-			</div>
 			</div>
 		</div>
 	</div>
@@ -55,7 +55,10 @@ const serviceStore = useServiceStore();
 const visible = ref(false)
 const router = useRouter();
 const gmail = ref('')
+const route = useRoute();
 const password = ref('')
+
+const role = ref(localStorage.getItem('role'))
 
 const loginUser = async() => {
 	try {
@@ -71,7 +74,12 @@ const loginUser = async() => {
    const token = response.data.token;
    serviceStore.JWT_TOKEN = token;
 	serviceStore.setToken(token)
-	router.push('/user/account/')
+	serviceStore.isRegistered = true;
+	if(password.value === 'admin') {
+		router.push('/admin')
+	}else {
+		router.push({ path: '/auth/anketa/', query: { role: role.value} })
+	}
 	}catch(err) {
 		console.log(err)
 	}

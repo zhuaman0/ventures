@@ -103,6 +103,8 @@ const handleItemClick = (action) => {
 		router.push('/auth/login')
 	}else if(action === 'settings') {
 		router.push('/user/account')
+	}else if(action === 'profile') {
+		router.push('/investor/questionnaire')
 	}
 }
 </script>

@@ -3,7 +3,7 @@
 				<RouteRouterPath :breadcrumbs="breadcrumbs" />
 				<h1 class="tw-font-bold tw-text-[32px] tw-my-[15px]">Стартапы</h1>
 				<span class="tw-font-[400] tw-text-[16px] tw-text-[#767A87] tw-leading-[120%]">
-					Всего {{ filteredProducts.length }} стартапов
+					Всего {{ lenghtItems }} {{ $route.query.type }}
 				</span>
 
 				<div class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-4 tw-gap-4 tw-pt-7 tw-mb-10">
@@ -13,51 +13,55 @@
 						<div class="tw-my-[20px]">
 							<h2 class="tw-text-[#181123] tw-font-[500] tw-text-[16px] tw-mb-4">Индустрии</h2>
 							<ul class="tw-space-y-3">
-								<li v-for="industry in industries" :key="industry.id" class="tw-flex tw-items-center">
+								<li v-for="(item, index) in industries" :key="index" class="tw-flex tw-items-center">
 									<input
 										type="checkbox"
-										:id="'industry-' + industry.id"
-										v-model="selectedIndustries"
-										:value="industry.name"
 										class="tw-w-4 tw-h-4 tw-text-[#228B6B] tw-bg-gray-100 tw-border-gray-300 tw-rounded focus:tw-ring-[#228B6B]"
 									>
-									<label :for="'industry-' + industry.id" class="tw-ml-2 tw-text-sm tw-font-medium tw-text-gray-900">
-										{{ industry.name }}
+									<label  class="tw-ml-2 tw-text-sm tw-font-medium tw-text-gray-900">
+										{{ item.name }}
 									</label>
 								</li>
 							</ul>
 						</div>
-
 						<div class="tw-my-[20px]">
 							<h2 class="tw-text-[#181123] tw-font-[500] tw-text-[16px] tw-mb-4">Технологии</h2>
 							<ul class="tw-space-y-3">
-								<li v-for="tech in technologies" :key="tech.id" class="tw-flex tw-items-center">
+								<li v-for="(item, index) in technologies" :key="index" class="tw-flex tw-items-center">
 									<input
 										type="checkbox"
-										:id="'tech-' + tech.id"
-										v-model="selectedTechnologies"
-										:value="tech.name"
 										class="tw-w-4 tw-h-4 tw-text-[#228B6B] tw-bg-gray-100 tw-border-gray-300 tw-rounded focus:tw-ring-[#228B6B]"
 									>
-									<label :for="'tech-' + tech.id" class="tw-ml-2 tw-text-sm tw-font-medium tw-text-gray-900">
-										{{ tech.name }}
+									<label  class="tw-ml-2 tw-text-sm tw-font-medium tw-text-gray-900">
+										{{ item.name }}
 									</label>
 								</li>
 							</ul>
 						</div>
-						<div class="tw-my-[20px]">
-							<h2 class="tw-text-[#181123] tw-font-[500] tw-text-[16px] tw-mb-4">Источник</h2>
+					    <div class="tw-my-[20px]">
+							<h2 class="tw-text-[#181123] tw-font-[500] tw-text-[16px] tw-mb-4">Стадия проекта</h2>
 							<ul class="tw-space-y-3">
-								<li v-for="source in sourceInfoes" :key="source.id" class="tw-flex tw-items-center">
+								<li v-for="(item, index) in developmentStages" :key="index" class="tw-flex tw-items-center">
 									<input
 										type="checkbox"
-										:id="'source-' + source.id"
-										v-model="selectedSourceInfoes"
-										:value="source.name"
 										class="tw-w-4 tw-h-4 tw-text-[#228B6B] tw-bg-gray-100 tw-border-gray-300 tw-rounded focus:tw-ring-[#228B6B]"
 									>
-									<label :for="'source-' + source.id" class="tw-ml-2 tw-text-sm tw-font-medium tw-text-gray-900">
-										{{ source.name }}
+									<label  class="tw-ml-2 tw-text-sm tw-font-medium tw-text-gray-900">
+										{{ item.name }}
+									</label>
+								</li>
+							</ul>
+						</div>
+						 <div class="tw-my-[20px]">
+							<h2 class="tw-text-[#181123] tw-font-[500] tw-text-[16px] tw-mb-4">Стадия инвестирования</h2>
+							<ul class="tw-space-y-3">
+								<li v-for="(item, index) in innovationMethods" :key="index" class="tw-flex tw-items-center">
+									<input
+										type="checkbox"
+										class="tw-w-4 tw-h-4 tw-text-[#228B6B] tw-bg-gray-100 tw-border-gray-300 tw-rounded focus:tw-ring-[#228B6B]"
+									>
+									<label  class="tw-ml-2 tw-text-sm tw-font-medium tw-text-gray-900">
+										{{ item.name }}
 									</label>
 								</li>
 							</ul>
@@ -76,29 +80,15 @@
 								placeholder="Поиск"
 								class="tw-w-full tw-h-[56px] focus:tw-outline-none tw-text-[16px] tw-text-[#767A87]" 
 							/>
+							<button class="tw-bg-[#1c7a5d] tw-text-white tw-py-2 tw-px-3 tw-rounded-xl" @click="searchQueryClick">Іздеу</button>
 						</div>
-
-						<div class="tw-mb-[20px] tw-flex tw-flex-wrap tw-gap-2">
-							<div 
-								v-for="product in filteredProducts" 
-								:key="product.id"
-								class="tw-bg-[#E7E4FF] tw-flex tw-items-center tw-py-[4px] tw-pr-[8px] tw-pl-[8px] tw-rounded"
-							>
-								<span class="tw-text-sm">{{ product.name }}</span>
-							</div>
+						<DetailItem v-if="$route.query.type === 'Startup'" :products="filteredProducts" />
+						<InvestorItem :productss="filteredProductss"  v-else-if="$route.query.type === 'Investor'"/>
+						<div v-if="filteredProducts.length === 0 && filteredProductss.length === 0" class="tw-w-full tw-flex tw-flex-col tw-items-center tw-mt-8 tw-justify-center tw-text-center">
+							<img src="/assets/icons/loading/searchNotFound.svg" alt="">
+							<h1 class="tw-text-[#767A87] tw-text-[16px] tw-font-[400]">По вашим запросам ничего не найдено</h1>
 						</div>
-						<DetailItem :products="filteredProducts" />
-						<div class="tw-bg-white tw-w-full tw-py-4 tw-px-4 tw-flex tw-items-center tw-rounded-lg tw-mt-4">
-							<div class="tw-mr-4">
-								<h1 class="tw-font-[600] tw-text-[24px] tw-mb-4">
-									Полный список участников будет доступен после регистрации на площадке
-								</h1>
-								<button class="tw-bg-[#228B6B] hover:tw-bg-[#1c7a5d] tw-text-white tw-py-[16px] tw-px-[72px] tw-rounded tw-transition">
-									Присоединиться
-								</button>
-							</div>
-							<img src="/assets/img/access.png" alt="" class="tw-hidden md:tw-block" />
-						</div>
+						<IsRegistered v-if="!serviceStore.JWT_TOKEN"/>
 					</div>
 				</div>
 			</div>
@@ -107,65 +97,26 @@
 		<script setup>
 	import { ref, onMounted, computed } from 'vue'
 	import axios from 'axios'
+import { useServiceStore } from '~/stores/services'
 
 	definePageMeta({
 	layout: 'default',
 	name: 'detail',
 	})
-
-	const searchQuery = ref('')
 	const products = ref([])
-
+	const productss = ref([])
+	const productsItem = ref([])
+	const industries = ref([])
+   const technologies = ref([])
+   const developmentStages = ref([])
+   const innovationMethods = ref([])
+	const serviceStore = useServiceStore();
+	const route = useRoute()
+	const searchQuery = ref('')
 	const breadcrumbs = [
 	{ title: 'Главная', disabled: false, href: '/' },
 	{ title: 'Найти стартап', disabled: true, href: '/auth/login/' },
 	]
-
-	// Фильтры и выбранные значения
-	const industries = ref([])
-	const selectedIndustries = ref([])
-
-	const technologies = ref([])
-	const selectedTechnologies = ref([])
-
-	const sourceInfoes = ref([])
-	const selectedSourceInfoes = ref([])
-
-	const developmentStages = ref([])
-	const investmentStages = ref([])
-	const businessModels = ref([])
-
-	const filteredProducts = computed(() =>
-	products.value.filter(product => {
-		if (
-		selectedIndustries.value.length &&
-		!selectedIndustries.value.includes(product.industryName)
-		) return false;
-
-		if (
-		selectedTechnologies.value.length &&
-		(!product.technologies ||
-			!selectedTechnologies.value.some(t =>
-			product.technologies.some(pt => pt.name === t)
-			))
-		) return false;
-
-		if (
-		selectedSourceInfoes.value.length &&
-		(!product.sourceInfoes ||
-			!selectedSourceInfoes.value.some(s =>
-			product.sourceInfoes.some(ps => ps.name === s)
-			))
-		) return false;
-
-		if (
-		searchQuery.value &&
-		!product.name.toLowerCase().includes(searchQuery.value.toLowerCase())
-		) return false;
-
-		return true;
-	})
-	)
 
 	const getProductsDetail = async () => {
 	try {
@@ -176,36 +127,54 @@
 	}
 	}
 
-	const getAllFilters = async () => {
+	const getDetailItems = async() => {
 	try {
-		const [
-		techRes,
-		sourceRes,
-		industryRes,
-		investmentStageRes,
-		businessModelRes
-		] = await Promise.all([
-		axios.get('https://zhervc-api.azurewebsites.net/api/Technologies'),
-		axios.get('https://zhervc-api.azurewebsites.net/api/Sourceinfoes'),
-		axios.get('https://zhervc-api.azurewebsites.net/api/Developmentstages'),
-		axios.get('https://zhervc-api.azurewebsites.net/api/Investmentstages'),
-		axios.get('https://zhervc-api.azurewebsites.net/api/Businessmodels'),
-		])
-
-		technologies.value = techRes.data
-		sourceInfoes.value = sourceRes.data
-		industries.value = industryRes.data
-		investmentStages.value = investmentStageRes.data
-		businessModels.value = businessModelRes.data
-
-	} catch (err) {
-		console.error(err)
+		const res = await axios.get('https://zhervc-api.azurewebsites.net/api/Investor', {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('JWT_TOKEN')}`
+			}
+		})
+		productss.value = res.data
+		console.log(res.data)
+	}catch(err) {
+		console.log(err)
 	}
+}
+
+	const getFilterItems = async() => {
+		try {
+			const [resIndustries, resTechnologies, resStages, resMethods] = await Promise.all([
+				axios.get('https://zhervc-api.azurewebsites.net/api/Industries'),
+            axios.get('https://zhervc-api.azurewebsites.net/api/Technologies'),
+            axios.get('https://zhervc-api.azurewebsites.net/api/Developmentstages'),
+            axios.get('https://zhervc-api.azurewebsites.net/api/Innovationmethods'),
+			])
+			industries.value = resIndustries.data
+			technologies.value = resTechnologies.data
+			developmentStages.value = resStages.data
+			innovationMethods.value = resMethods.data
+			console.log(resIndustries)
+		}catch(err) {
+			console.log(err)
+		}
 	}
+
+	const lenghtItems = computed(() => {
+		if(route.query.type === 'Investor') return products.value.length
+		if(route.query.type === 'Investor') return productss.value.length
+	})
+
+	const filteredProducts = computed(() => {
+		return products.value.filter(product => product.publicName.toLowerCase().includes(searchQuery.value.toLowerCase()))
+	})
+	const filteredProductss = computed(() => {
+		return productss.value.filter(product => product.fullName.toLowerCase().includes(searchQuery.value.toLowerCase()))
+	})
 
 	onMounted(() => {
-	getProductsDetail()
-	getAllFilters()
+	getProductsDetail(),
+	getFilterItems(),
+	getDetailItems()
 	})
 	</script>
 

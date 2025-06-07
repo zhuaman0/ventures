@@ -1,15 +1,11 @@
 <template>
-	<div class="tw-py-4 tw-px-4 tw-max-w-[1300px] tw-mx-auto">
-		<div>
-			<h1 class="tw-text-center tw-text-[#181236] tw-font-[600] tw-text-[32px]">Анкета стартапа</h1>
-					<div class="tw-bg-white tw-flex-col tw-items-center tw-relative tw-max-w-[530px] tw-mx-auto tw-my-[30px]">
-			<div class="tw-px-4 tw-py-4 tw-w-full">
+	<div>
 				<form class="tw-w-full" action="">
 					<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="fullname">Публичное название</label>
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="componyname">Публичное название</label>
 					   <v-text-field
 					        class="tw-w-full tw-mt-2"
-					        id="fullname"
+					        id="componyname"
                        placeholder="Например, BnB Ventures"
                        variant="outlined"
 							  autocomplete="off"
@@ -17,10 +13,10 @@
                   ></v-text-field>
 					</div>
 					<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Сайт</label>
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="site">Сайт</label>
 					   <v-text-field
 					        class="tw-w-full tw-mt-2"
-					        id="gmail"
+					        id="site"
                        placeholder="https://"
                        variant="outlined"
 							  autocomplete="off"
@@ -28,10 +24,10 @@
                   ></v-text-field>
 					</div>
 					<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="phonenumber">Имя и фамилия контактного лица</label>
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="fullname">Имя и фамилия контактного лица</label>
 					   <v-text-field
 					        class="tw-w-full tw-mt-2"
-					        id="phonenumber"
+					        id="fullname"
                        placeholder="Иван Иванов"
                        variant="outlined"
 							  autocomplete="off"
@@ -39,22 +35,22 @@
                   ></v-text-field>
 					</div>
 					<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Публичная электронная почта</label>
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="email">Публичная электронная почта</label>
 					   <v-text-field
 					        class="tw-w-full tw-mt-2"
-					        id="gmail"
+					        id="email"
                        placeholder="name@example.com"
                        variant="outlined"
 							  autocomplete="off"
 							  v-model="form.gmail"
                   ></v-text-field>
 					</div>
-										<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Номер телефона</label>
+					<div class="tw-mb-4">
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="phonenumber">Номер телефона</label>
 					   <v-text-field
 							  v-maska="'+7 (###) ###-##-##'"
 					        class="tw-w-full tw-mt-2"
-					        id="gmail"
+					        id="phonenumber"
                        placeholder="+7 (777) 123 45 67"
                        variant="outlined"
 							  autocomplete="off"
@@ -62,21 +58,21 @@
                   ></v-text-field>
 					</div>
 					<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Наименование организации</label>
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="org">Наименование организации</label>
 					   <v-text-field
 					        class="tw-w-full tw-mt-2"
-					        id="gmail"
+					        id="org"
                        placeholder="Например, ООО “Компания”"
                        variant="outlined"
 							  autocomplete="off"
 							  v-model="form.orginizationname"
                   ></v-text-field>
 					</div>
-										<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Идентификационный номер</label>
+					<div class="tw-mb-4">
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="idnumber">Идентификационный номер</label>
 					   <v-text-field
 					        class="tw-w-full tw-mt-2"
-					        id="gmail"
+					        id="idnumber"
                        placeholder="Укажите номер"
                        variant="outlined"
 							  autocomplete="off"
@@ -84,10 +80,10 @@
                   ></v-text-field>
 					</div>
 					<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Год основания</label>
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="year">Год основания</label>
 					   <v-text-field
 					        class="tw-w-full tw-mt-2"
-					        id="gmail"
+					        id="year"
                        placeholder="Год основания"
                        variant="outlined"
 							  autocomplete="off"
@@ -95,7 +91,7 @@
                   ></v-text-field>
 					</div>
 					<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Страна регистрации</label>
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="city">Страна регистрации</label>
 <v-autocomplete
   class="tw-w-full tw-mt-2"
   label="Страна регистрации"
@@ -107,41 +103,29 @@
 ></v-autocomplete>
 					</div>
 					<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Количество сотрудников</label>
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="length">Количество сотрудников</label>
 					   <v-text-field
 					        class="tw-w-full tw-mt-2"
-					        id="gmail"
+					        id="length"
                        placeholder="Укажите количество сотрудников"
                        variant="outlined"
 							  autocomplete="off"
 							  v-model="form.listusers"
                   ></v-text-field>
 					</div>
-															<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Страна регистрации</label>
-<v-autocomplete
-  class="tw-w-full tw-mt-2"
-  label="Выберите страну"
-  :items="country"
-  item-title="name"
-  item-value="id"
-  variant="outlined"
-  v-model="form.country"
-></v-autocomplete>
-					</div>
 					<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Описание</label>
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="desc">Описание</label>
 					   <v-text-field
 					        class="tw-w-full tw-mt-2"
-					        id="gmail"
+					        id="desc"
                        placeholder="Расскажите о вашем продукте"
                        variant="outlined"
 							  autocomplete="off"
 							  v-model="form.description"
                   ></v-text-field>
 					</div>
-										<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Стадия развития стартапа</label>
+					<div class="tw-mb-4">
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="raz">Стадия развития стартапа</label>
 <v-autocomplete
   class="tw-w-full tw-mt-2"
   label="Выберите стадию развития"
@@ -149,7 +133,19 @@
   item-title="name"
   item-value="id"
   variant="outlined"
-  v-model="form.stage"
+  v-model="form.development"
+></v-autocomplete>
+					</div>
+					<div class="tw-mb-4">
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="raz">Стадия инвестирования</label>
+<v-autocomplete
+  class="tw-w-full tw-mt-2"
+  label="Выберите стадию инвестирования"
+  :items="investmentStages"
+  item-title="name"
+  item-value="id"
+  variant="outlined"
+  v-model="form.investmentstage"
 ></v-autocomplete>
 					</div>
 <div class="tw-mb-4">
@@ -165,27 +161,15 @@
   ></v-autocomplete>
 </div>
 <div class="tw-mb-4">
-  <label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px]" for="innovation">Метод инноваций</label>
+  <label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px]" for="innovation">Технологии вашего стартапа</label>
   <v-autocomplete
     class="tw-w-full tw-mt-2"
-    label="Выберите метод"
+    label="Выберите технологии"
     :items="innovationMethods"
     item-title="name"
     item-value="id"
     variant="outlined"
     v-model="form.innovationmethod"
-  ></v-autocomplete>
-</div>
-<div class="tw-mb-4">
-  <label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px]" for="investment">Стадия инвестиций</label>
-  <v-autocomplete
-    class="tw-w-full tw-mt-2"
-    label="Выберите стадию"
-    :items="investmentStages"
-    item-title="name"
-    item-value="id"
-    variant="outlined"
-    v-model="form.investmentstage"
   ></v-autocomplete>
 </div>
 <div class="tw-mb-4">
@@ -201,18 +185,6 @@
   ></v-autocomplete>
 </div>
 <div class="tw-mb-4">
-  <label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px]" for="investment">Модели продаж</label>
-  <v-autocomplete
-    class="tw-w-full tw-mt-2"
-    label="Выберите стадию"
-    :items="salesModels"
-    item-title="name"
-    item-value="id"
-    variant="outlined"
-    v-model="form.salesmodels"	
-  ></v-autocomplete>
-</div>
-<div class="tw-mb-4">
   <label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px]" for="investment">Рынки, на которых вы работаете</label>
   <v-autocomplete
     class="tw-w-full tw-mt-2"
@@ -224,14 +196,57 @@
     v-model="form.country"	
   ></v-autocomplete>
 </div>
-
+<div class="tw-mb-4">
+	<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="fullname">Общий объем ранее привлеченных инвестиций</label>
+   <v-text-field
+        class="tw-w-full tw-mt-2"
+        id="fullname"
+        placeholder="$"
+        variant="outlined"
+		  autocomplete="off"
+		  v-model="form.allob"
+   ></v-text-field>
+</div>
+<div class="tw-mb-4">
+	<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="fullname">Список инвесторов</label>
+   <v-text-field
+        class="tw-w-full tw-mt-2"
+        id="fullname"
+        placeholder="Перечислите инвесторов, от которых получали инвестиции"
+        variant="outlined"
+		  autocomplete="off"
+		  v-model="form.listalluser"
+   ></v-text-field>
+</div>
+<div class="tw-mb-4">
+  <label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px]" for="investment">Логотип</label>
+  <v-file-input
+    class="tw-w-full tw-mt-2"
+    label="Выберите файл или перетащите его"
+    :items="country"
+    item-title="name"
+    item-value="id"
+    variant="outlined"
+	 v-model="form.logo"
+  ></v-file-input>
+</div>
+<div class="tw-mb-4">
+  <label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px]" for="investment">Презентация</label>
+  <v-file-input
+    class="tw-w-full tw-mt-2"
+    label="Выберите файл или перетащите его"
+    :items="country"
+    item-title="name"
+    item-value="id"
+    variant="outlined"
+	 v-model="form.presentaion"
+  ></v-file-input>
+</div>
 					<div class="tw-mb-4">
 						<button type="button" @click="registerAnketa" class="tw-bg-[#36CE9F] tw-text-white tw-font-bold tw-w-full tw-py-4"><p class="tw-text-white">Зарегистрироваться</p></button>
-					</div>
+					</div>	
+
 				</form>
-			</div>
-		</div>
-		</div>
 	</div>
 </template>
 
@@ -246,7 +261,7 @@ const form = ref({
 	phonenumber: '',
 	orginizationname: '',
 	indentidynumber: '',
-	year: '',
+	year: 0,
 	country: null,
 	listusers: '',
 	stage: null,
@@ -255,7 +270,13 @@ const form = ref({
    investmentstage: null, 
 	buisnessmodel: null,
 	salesmodels: null,
-	description: ''
+	description: '',
+	logo: null,
+	presentaion: null,
+	development: null,
+	techmodel: null,
+	allob: 0,
+	listalluser: ''
 })
 
 const country = ref([])
@@ -264,7 +285,9 @@ const industries = ref([])
 const innovationMethods = ref([])
 const investmentStages = ref([])
 const buisnessModel = ref([])
+const techModel = ref([])
 const salesModels = ref([])
+const router = useRouter();
 const token = localStorage.getItem('JWT_TOKEN')
 
 
@@ -280,24 +303,23 @@ const registerAnketa = async () => {
 			OrganizationName: form.value.orginizationname,
 			IdentificationNumber: form.value.indentidynumber,
 			FoundingYear: form.value.year,
-			CountryId: 4,
-			EmployeeCount: 4,
+			CountryId: form.value.country,
+			EmployeeCount: form.value.listusers,
 			Description: form.value.description,
-			DevelopmentStageId: form.value.stage,
+			DevelopmentStageId: form.value.development,
+			InvestmentStageId: form.value.investmentstage,
 			HasSales: true,
 			ActivelyLookingForInvestment: true,
-			TotalPreviousInvestment: 0.5,
-			InvestorList: 'What kind of list',
 			SourceInfoId: 1,
-			Logo: 'Screenshot from 2025-06-01 23-30-21.png',
-			Presentation: 'Screenshot from 2025-06-01 23-30-21.png',
-			IndustryIds: [form.value.industry],
-         InnovationMethodId: form.value.innovationmethod,
-         InvestmentStageId: form.value.investmentstage,
-			TechnologyIds: [1, 2],
-			BusinessModelIds: [1],
-			SalesModelIds: [2],
-			TargetCountryIds: [1]
+			Logo: form.value.logo,
+			Presentation: form.value.presentaion,
+			IndustryIds: form.value.industry,
+			TechnologyIds: form.value.techmodel,
+			BusinessModelIds: form.value.buisnessmodel,
+			SalesModelIds: 2,
+			TargetCountryIds: 1,
+			TotalPreviousInvestment: form.value.allob,
+			InvestorList: form.value.listalluser
 		},
 	   {
 			headers: {
@@ -306,6 +328,7 @@ const registerAnketa = async () => {
 			}
 		})
 		console.log('All corect', response.data)
+		router.push('/investor/questionnaire/')
 	}catch(err) {
 		console.log(err)
 	}
@@ -376,6 +399,14 @@ const getSalesModels = async () => {
   }
 }
 
+const getTechModels = async () => {
+  try {
+    const response = await axios.get('https://zhervc-api.azurewebsites.net/api/Technologies')
+    techModel.value = response.data
+  } catch (err) {
+    console.log(err)
+  }
+}
 
 onMounted(() => {
 	getCountryList(),
@@ -384,7 +415,8 @@ onMounted(() => {
 	getInnovationMethods(),
 	getInvestmentStages(),
 	getBuisnessModel(),
-	getSalesModels()
+	getSalesModels(),
+	getTechModels()
 })
 </script>
 

@@ -34,17 +34,21 @@
 
 		<div class="tw-flex sm:tw-flex-row tw-flex-col lg:tw-flex-row tw-justify-center tw-gap-5 tw-text-sm tw-text-white/80">
 			<p>{{ $t('footer.copyright') }}</p>
-			<NuxtLink to="/" class="hover:tw-underline">{{ $t('footer.privacy') }}</NuxtLink>
+			<NuxtLink @click="supportMessage" to="/" class="hover:tw-underline">{{ $t('footer.privacy') }}</NuxtLink>
 		</div>
 		</div>
+		<HelpMennager @onClick="confirmedButton" v-if="supportModal"/>
 	</footer>
 </template>
 
 
 <script setup lang="ts">
+const supportModal = ref(false)
+const supportMessage = () => {
+	supportModal.value = true
+}
 
+const confirmedButton = () => {
+	supportModal.value = false
+}
 </script>
-
-<style scoped>
-
-</style>

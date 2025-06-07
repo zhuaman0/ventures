@@ -6,9 +6,9 @@
 			</div>
 	
 			<nav class="tw-hidden lg:tw-flex tw-items-center tw-gap-6 tw-text-sm tw-font-bold tw-text-gray-900">
-			<NuxtLink to="/" class="hover:tw-text-green-600">Стартапы</NuxtLink>
+			<NuxtLink @click="startupPage" class="hover:tw-text-green-600">Стартапы</NuxtLink>
 			<NuxtLink to="/" class="hover:tw-text-green-600">Корпорации</NuxtLink>
-			<NuxtLink to="/" class="hover:tw-text-green-600">Инвесторы</NuxtLink>
+			<NuxtLink @click="investorPage" class="hover:tw-text-green-600">Инвесторы</NuxtLink>
 			<NuxtLink to="/" class="hover:tw-text-green-600">Специалисты</NuxtLink>
 			<NuxtLink to="/" class="hover:tw-text-green-600">Новости</NuxtLink>
 			</nav>
@@ -38,7 +38,7 @@
 					<NuxtLink to="/auth/login" class="tw-w-full tw-text-center tw-py-2 tw-px-2 tw-text-white tw-rounded tw-bg-[#36CE9F]/80">
 						Войти
 					</NuxtLink>
-					<NuxtLink to="/" class="tw-border tw-border-[#36CE9F] tw-ml-4 tw-text-green-600 tw-w-full tw-text-center tw-px-2 tw-py-2 tw-rounded tw-bg-[#36CE9F]/10">
+					<NuxtLink to="/auth/registration" class="tw-border tw-border-[#36CE9F] tw-ml-4 tw-text-green-600 tw-w-full tw-text-center tw-px-2 tw-py-2 tw-rounded tw-bg-[#36CE9F]/10">
 						Регистрация
 					</NuxtLink>
 					</div>
@@ -104,7 +104,7 @@
 	<script setup lang="ts">
 		import { useI18n } from '#imports';
 import { useServiceStore } from '~/stores/services';
-
+const router = useRouter()
 		const { locale } = useI18n()
 		const drawerOpen = ref(false)
 		const token = computed(() => serviceStore.JWT_TOKEN)
@@ -125,6 +125,15 @@ function changeLocale(code: any) {
   locale.value = code
   document.cookie = `currentLanguage=${code}; path=/`
   window.location.reload()
+}
+
+
+const startupPage = () => {
+	router.push({ path: '/product/product-list/', query: { type: 'Startup' } })
+}
+
+const investorPage = () => {
+	router.push({ path: '/product/product-list/', query: { type: 'Investor' } })
 }
 
 	</script>

@@ -1,7 +1,7 @@
 <template>
 	<div class="tw-px-4">
 		<div class="tw-bg-white tw-flex-col tw-items-center tw-relative tw-max-w-[530px] tw-mx-auto tw-py-4 tw-px-4  tw-my-[30px] lg:tw-my-[60px]">
-			<p class="tw-text-[#181236] tw-font-[400] tw-text-[16px] tw-leading-[20px]">Мы отправили на почту daniyar.a@gmail.com сообщение 6-ти значным кодом, введите его.</p>
+			<p class="tw-text-[#181236] tw-font-[400] tw-text-[16px] tw-leading-[20px]">Мы отправили на почту {{ email }} сообщение 6-ти значным кодом, введите его.</p>
 			    <v-otp-input
       v-model="otp"
       :loading="serviceStore.pageLoading"
@@ -63,7 +63,8 @@ const checkVerify = async () => {
 		console.log('Checked all corect', response.data)
 		if(response.data === 'Email confirmed.') {
 			serviceStore.toast.success("Verifyed Code");
-			router.push('/auth/login')
+			router.push('/auth/login/')
+
 		}else {
 			serviceStore.toast.error("Not correct code")
 		}
