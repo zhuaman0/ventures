@@ -7,12 +7,11 @@
 	leave-active-class="animite_animated animate_fadeOut animate_faster"
 	appear
 	>
-	<div class="tw-max-w-[390px] tw-min-w-[390px] tw-max-h-max tw-rounded-[12px] tw-bg-white tw-px-4 tw-pt-[30px] tw-pb-4">
+	<div class="tw-max-w-[290px] tw-min-w-[290px] lg:tw-max-w-[390px] lg:tw-min-w-[390px] tw-max-h-max tw-rounded-[12px] tw-bg-white tw-px-4 tw-pt-[30px] tw-pb-4">
 		<div class="tw-flex tw-justify-between tw-items-center tw-h-full">
 	   <h1 class="tw-text-[#181236] tw-font-bold tw-text-[20px]">
 			Написать в службу поддержки
 		</h1>
-		<img src="/assets/icons/back.svg" alt="">
 		</div>
 		<form action="">
 			<div class="tw-mb-4 tw-mt-4">
@@ -38,11 +37,11 @@
             ></v-text-field>
 			</div>
 			<div class="tw-mb-4 tw-mt-4">
-				<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Электронная почта</label>
+				<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="gmail">Сообщение</label>
 				<v-textarea v-model="desc" class="tw-w-full tw-text-black tw-mt-2 tw-border-[#D2D4DB] tw-border-[1px]" label="Напишите о свое сообщение..."></v-textarea>
 			</div>
 		</form>
-		<button @click="handleClick" class="tw-text-white tw-bg-[#36CE9F] tw-w-full tw-h-[48px]">asdf</button>
+		<button @click="handleClick" class="tw-text-white tw-bg-[#36CE9F] tw-w-full tw-h-[48px]">Отправить</button>
 	</div>
 	</transition>
 	</div>

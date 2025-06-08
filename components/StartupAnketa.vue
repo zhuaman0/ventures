@@ -1,39 +1,35 @@
 <template>
 	<div class="tw-max-w-7xl tw-mx-auto tw-mt-[20px] tw-mb-[90px]">
-		<h1 class="tw-font-bold tw-text-[32px] tw-my-[15px]">Моя анкета</h1>
+		<h1 class="tw-font-bold lg:tw-text-[32px] tw-text-[20px] lg:tw-ml-0 tw-ml-5 tw-my-[15px]">Моя анкета</h1>
 		<div class="tw-grid tw-grid-cols-4 tw-gap-4">
-			<div class="tw-grid tw-col-span-3">
+			<div class="tw-grid tw-col-span-4 lg:tw-col-span-3">
 				<div class="tw-bg-white tw-w-full tw-flex tw-items-start tw-justify-between tw-px-4 tw-py-6 tw-mb-4">
-					<div class="tw-flex tw-items-start">
-						<img class="tw-w-[60px] tw-h-[60px]" :src="getImagee(investorDetail.logoPath)" alt="">
-						<div class="tw-ml-[20px]">
+					<div class="tw:grid lg:tw-grid-cols-2 tw-grid-cols-1">
+						<img class="tw-w-[163px] tw-h-[61px]" :src="getImagee(investorDetail.logoPath)" alt="">
+						<div class="">
 							<h1 class="tw-text-[#181236] tw-font-bold tw-text-[20px] tw-mb-2">{{ investorDetail.publicName }}</h1>
 							<div class="tw-flex tw-items-center">
 								<img v-if="investorDetail.stateless === 'Pending'" class="tw-mr-2" src="/assets/icons/clock.svg" alt="">
-								<p v-if="investorDetail.status === 'Pending'" class="tw-text-[#181236] tw-font-[400] tw-text-[16px] tw-ml-2">На проверке</p>
+								<p v-if="investorDetail.status === 'Pending'" class="tw-text-[#181236] tw-font-[400] tw-text-[16px]">На проверке</p>
 								<p v-else class="tw-text-[#181236] tw-font-[400] tw-text-[16px]">Одобрен</p>
 							</div>
 						</div>
-					</div>
-					<div>
-						<img src="/assets/icons/edit.svg" alt="">
 					</div>
 				</div>
 				<div class="tw-bg-white tw-w-full tw-px-4 tw-py-6 tw-mb-4">
 					<div class="tw-flex tw-items-center tw-justify-between">
 						<h1 class="tw-font-bold tw-text-[20px] tw-my-[15px]">О продукте</h1>
-						<img src="/assets/icons/edit.svg" alt="">
 					</div>
 					<div class="tw-mb-[15px]">
 						<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Описание</h1>
-						<p class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-leading-[20px]">{{ investorDetail.description }}</p>
+						<p class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-w-[300px] lg:tw-w-full">{{ investorDetail.description }}</p>
 					</div>
-					<div class="tw-flex tw-items-center tw-mb-[15px]">
+					<div class="tw-grid tw-gap-5 lg:tw-grid-cols-2 tw-grid-cols-1 tw-items-center tw-mb-[15px]">
 					   <div>
 					   	<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Стадия развития</h1>
 					   	<p class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-leading-[20px]">{{ investorDetail.developmentStage }}</p>
 					   </div>
-						<div class="tw-ml-[20px]">
+						<div class="">
 					   	<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Бизнес модели</h1>
 					   	<ul>
 								<li v-for="(item, index) in  investorDetail.businessModels" :key="index">
@@ -44,28 +40,28 @@
 					</div>
 					<div class="tw-mb-[15px]">
 						<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Индустрии</h1>
-						<ul v-for="(item, index) in investorDetail.industries" :key="index" class="tw-mt-[7px]">
-							<li class="tw-border-[1px] tw-border-[#B9B1FC] tw-py-[4px] tw-px-[16px] tw-w-[200px]">
+						<ul class="tw-mt-[7px] tw-flex tw-flex-wrap lg:tw-flex-nowrap tw-items-center">
+							<li v-for="(item, index) in investorDetail.industries" :key="index" class="tw-border-[1px] tw-mr-4 tw-mt-2 lg:tw-mt-0 tw-border-[#B9B1FC] tw-py-[4px] tw-px-[16px] tw-w-full">
 								{{ item }}
 							</li>
 						</ul>
 					</div>
 					<div class="tw-mb-[15px]">
 						<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Технологии</h1>
-						<ul v-for="(item, index) in investorDetail.technologies" :key="index" class="tw-mt-[7px]">
-							<li class="tw-border-[1px] tw-border-[#B9B1FC] tw-py-[4px] tw-px-[16px] tw-w-auto">
-								AdTech & MarTech
+						<ul class="tw-mt-[7px] tw-flex tw-items-center tw-flex-wrap lg:tw-flex-nowraps">
+							<li v-for="(item, index) in investorDetail.technologies" :key="index" class="tw-border-[1px] tw-mr-4 lg:tw-mt-0 tw-mt-2 tw-border-[#B9B1FC] tw-py-[4px] tw-px-[16px] tw-w-auto">
+								{{ item }}
 							</li>
 						</ul>
 					</div>
-					<div class="tw-mb-[15px]">
+					<div class="tw-mb-[15px] lg:tw-flex-col">
 						<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Ссылка на проект</h1>
 						<a :href="investorDetail.website" target="_blank" class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-leading-[20px]">{{ investorDetail.website }}</a>
 					</div>
 					<div class="tw-flex tw-items-center tw-mb-[15px]">
 					   <div>
 					   	<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Лого</h1>
-					   	<a :href="getImagee(investorDetail.logoPath)">
+					   	<a target="_blank" :href="getImagee(investorDetail.logoPath)">
 								<img class="tw-w-full tw-h-[48px] tw-mb-2" :src="getImagee(investorDetail.logoPath)" alt="">
 							</a>
 					   </div>
@@ -80,22 +76,21 @@
 				<div class="tw-bg-white tw-w-full tw-px-4 tw-py-6 tw-mb-4">
 					<div class="tw-flex tw-items-center tw-justify-between">
 						<h1 class="tw-font-bold tw-text-[20px] tw-my-[15px]">О компании</h1>
-						<img src="/assets/icons/edit.svg" alt="">
 					</div>
 					<div class="tw-mb-[15px]">
 						<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Публичное название</h1>
 						<p class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-leading-[20px]">{{ investorDetail.publicName }}</p>
 					</div>
-					<div class="tw-flex tw-items-center tw-mb-[15px]">
+					<div class="tw-grid lg:tw-grid-cols-2 tw-grid-cols-1 tw-gap-5 tw-mb-[15px]">
 					   <div>
 					   	<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Наименование организации</h1>
 					   	<p class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-leading-[20px]">{{ investorDetail.organizationName }}</p>
 					   </div>
-						<div class="tw-ml-[20px]">
+						<div class="">
 					   	<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Идентификационный номер</h1>
 					   	<p class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-leading-[20px]">{{ investorDetail.identificationNumber }}</p>
 					   </div>
-					   <div class="tw-ml-[20px]">
+					   <div class="">
 					   	<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Модели продаж</h1>
 					   	<ul>
 								<li v-for="(item, index) in investorDetail.businessModels" :key="index">
@@ -104,44 +99,45 @@
 							</ul>
 					   </div>
 					</div>
-					<div class="tw-flex tw-items-center tw-mb-[15px]">
+					<div class="tw-grid lg:tw-grid-cols-2 tw-grid-cols-1 tw-gap-5 tw-mb-[15px]">
 					   <div>
 					   	<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Страна регистрации</h1>
 					   	<p class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-leading-[20px]">{{ investorDetail.countryName }}</p>
 					   </div>
-						<div class="tw-ml-[20px]">
+						<div class="">
 					   	<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Год основания</h1>
 					   	<p class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-leading-[20px]">{{ investorDetail.foundingYear }}</p>
 					   </div>
-						<div class="tw-ml-[20px]">
+						<div class="">
 					   	<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Количество сотрудников</h1>
 					   	<p class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-leading-[20px]">{{ investorDetail.employeeCount }}</p>
 					   </div>
 					</div>
-				<div class="tw-flex tw-items-center tw-mb-[15px]">
+				<div class="tw-grid lg:tw-grid-cols-2 tw-grid-cols-1 tw-gap-5 tw-mb-[15px]">
 					   <div>
 					   	<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Контактное лицо</h1>
 					   	<p class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-leading-[20px]">{{ investorDetail.contactFullName }}</p>
 					   </div>
-						<div class="tw-ml-[20px]">
+						<div class="]">
 					   	<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Номер телефона</h1>
 					   	<p class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-leading-[20px]">{{ investorDetail.phoneNumber }}</p>
 					   </div>
-						<div class="tw-ml-[20px]">
+						<div class="">
 					   	<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Электронная почта</h1>
 					   	<p class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-leading-[20px]">{{ investorDetail.publicEmail }}</p>
 					   </div>
 					</div>
 				</div>
 				<div>
-				<h1 class="tw-font-bold tw-text-[32px] tw-my-[15px]">Мои действия</h1>
-				<div class="tw-grid tw-grid-cols-2 tw-gap-2">
+				<h1 class="tw-font-bold lg:tw-text-[32px] tw-text-[20px] lg:tw-ml-0 tw-ml-5 tw-my-[15px]">Мои действия</h1>
+				<div>
+				<div v-if="startUpRecieved && startUpSent" class="tw-grid lg:tw-grid-cols-2 tw-grid-cols-1 tw-gap-2">
 					<div>
-						<h1 class="tw-text-[#9296A1] tw-font-bold tw-text-[15px]">Мои заявки</h1>
+						<h1 class="tw-text-[#9296A1] tw-font-bold tw-text-[15px] lg:tw-ml-0 tw-ml-5">Мои заявки</h1>
 						<div class="tw-bg-[#fff] tw-py-3 tw-px-3 tw-mt-4">
 				         <div class="tw-flex tw-items-start">
 				         	<ul class="tw-ml-[10px]">
-									<li v-for="(item, index) in startUpRecieved" :key="index">
+									<li v-for="(item, index) in startUpRecieved" class="tw-bg-[#fff] tw-px-4 tw-py-4 tw-w-full tw-mb-4" :key="index">
 										<div>
 											<h1 class="tw-text-black tw-text-[22px] tw-font-[600]">{{ item.investorName }}</h1>
 										</div>
@@ -160,7 +156,7 @@
 			      </div>
 					</div>
 					<div>
-						<h1 class="tw-text-[#9296A1] tw-font-bold tw-text-[15px]">Мои запросы</h1>
+						<h1 class="tw-text-[#9296A1] tw-font-bold tw-text-[15px] lg:tw-ml-0 tw-ml-5">Мои запросы</h1>
 						<div class="tw-bg-[#fff] tw-py-3 tw-px-3 tw-mt-4">
 				         <div class="tw-flex tw-items-start">
 				         	<ul class="tw-ml-[10px]">
@@ -179,9 +175,13 @@
 			      </div>
 					</div>
 				</div>
+					<div v-else>
+						<p class="lg:tw-ml-0 tw-ml-5 tw-my-[15px]">Запрос не отправлен или нет офферов.</p>
+					</div>
+				</div>
 				</div>
 			</div>
-			<div class="tw-bg-[#228B6B] tw-h-[150px] tw-py-3 tw-px-3">
+			<div class="tw-bg-[#228B6B] tw-w-full tw-hidden lg:tw-flex tw-mt-6 lg:tw-mt-0 lg:flex tw-h-[150px] tw-py-3 tw-px-3">
 				<div v-if="investorDetail.status === 'Pending'" class="">	
 					<div class="tw-flex tw-items-start tw-justify-between">
 						<img src="/assets/icons/clock-white.svg" alt="">
@@ -194,7 +194,7 @@
 				<div v-if="investorDetail.status === 'Accepted'" class="">	
 					<div class="tw-flex tw-items-start tw-justify-between">
 						<div class="tw-ml-[10px]">
-							 <h1 class="tw-text-white tw-font-bold tw-text-[20px]">Одобрен, это правильно</h1>
+							 <h1 class="tw-text-white tw-font-bold tw-text-[20px]">Одобрен</h1>
 							  <p class="tw-text-[16px] tw-text-white tw-mt-2">Проверено все данные, ошибки исправлены, проект полностью готов к запуску.</p>
 						</div>
 					</div>

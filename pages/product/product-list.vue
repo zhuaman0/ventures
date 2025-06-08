@@ -1,7 +1,7 @@
 <template>
 	<div class="tw-max-w-7xl tw-mx-auto tw-mt-[20px] tw-mb-[90px]">
 	  <RouteRouterPath :breadcrumbs="breadcrumbs" />
-	  <h1 class="tw-font-bold tw-px-4 lg:tw-px-0 tw-text-[32px] tw-my-[15px]">Стартапы</h1>
+	  <h1 class="tw-font-bold tw-px-4 lg:tw-px-0 tw-text-[32px] tw-my-[15px]">{{ textOfindex }}</h1>
 	  <span class="tw-font-[400] tw-px-4 lg:tw-px-0 tw-text-[16px] tw-text-[#767A87] tw-leading-[120%]">
 		Всего {{ lenghtItems }} {{ textOfindex }}
 	  </span>
@@ -213,8 +213,8 @@
   )
   
   const textOfindex = computed(() => {
-	if (route.query.type === 'Startup') return 'Стартапы'
-	if (route.query.type === 'Investor') return 'Инвесторы'
+	if (route.query.type === 'Startup') return 'Стартап'
+	if (route.query.type === 'Investor') return 'Инвестор'
 	return ''
   })
   

@@ -17,7 +17,8 @@ useHead({
 })
 
 definePageMeta({
-  layout: 'admin'
+  layout: 'admin',
+  middleware: 'admin'
 })
 
 

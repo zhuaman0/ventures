@@ -68,9 +68,9 @@
 					</div>
 					<div class="tw-flex tw-flex-col lg:tw-flex-row tw-items-start tw-justify-start tw-mb-4">
 						<v-checkbox color="green" label=""></v-checkbox>
-						<span class="tw-text-[#36CE9F] tw-text-[16px]"><span class="tw-text-black">Подтверждаю, что я ознакомился(ась) с</span><br>Пользовательским соглашением и обработкой персональных данных</span>
+						<a target="_blank" href="https://sovz.kz/privacy" class="tw-text-[#36CE9F] tw-text-[16px]"><span class="tw-text-black">Подтверждаю, что я ознакомился(ась) с</span><br>Пользовательским соглашением и обработкой персональных данных</a>
 					</div>
-					<div class="tw-mb-4">
+					<div class="tw-mb-4 tw-text-white">
 						<button type="button" @click="submit" class="tw-bg-[#36CE9F] tw-text-white tw-font-bold tw-w-full tw-py-4">Зарегистрироваться</button>
 					</div>
 					<div class="tw-my-[10px] tw-flex tw-justify-center">

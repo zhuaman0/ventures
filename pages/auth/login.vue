@@ -81,7 +81,7 @@ const loginUser = async() => {
 	const decoded: any = jwtDecode(token)
 	const userRole = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
 	localStorage.setItem('role', userRole)
-	if(password.value === 'admin') {
+	if(password.value === 'Admin') {
 		router.push('/admin')
 	}else {
 		router.push({ path: '/auth/anketa/', query: { role: userRole} })

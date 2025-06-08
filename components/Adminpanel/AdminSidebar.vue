@@ -40,6 +40,7 @@ import { useServiceStore } from '~/stores/services'
   
   const { t } = useI18n()
   const route = useRoute()
+  const router = useRouter()
   
   const navItems = [
       {
@@ -67,6 +68,7 @@ import { useServiceStore } from '~/stores/services'
   const sideBarItem = (item) => {
 	if(item === 'Выйти') {
 		serviceStore.clearUser()
+    router.push('/auth/login')
 	}
   }
   </script>

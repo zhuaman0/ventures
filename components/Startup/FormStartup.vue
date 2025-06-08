@@ -165,11 +165,11 @@
   <v-autocomplete
     class="tw-w-full tw-mt-2"
     label="Выберите технологии"
-    :items="innovationMethods"
+    :items="techModel"
     item-title="name"
     item-value="id"
     variant="outlined"
-    v-model="form.innovationmethod"
+    v-model="form.techmodel"
   ></v-autocomplete>
 </div>
 <div class="tw-mb-4">

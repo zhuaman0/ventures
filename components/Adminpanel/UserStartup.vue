@@ -97,7 +97,6 @@
                 <input type="checkbox" class="tw-w-4 tw-h-4 tw-rounded" />
                 </td>
                 <td class="tw-p-4 tw-flex tw-items-center tw-gap-2">
-                <img :src="getImage(startup.profilePhotoPath)" class="tw-w-8 tw-h-8 tw-rounded-full" />
                 <div>
                     <div class="tw-font-medium">{{ startup.publicName }}</div>
                     <div class="tw-text-gray-500">{{ startup.organizationName }}</div>
@@ -128,8 +127,6 @@
                 </th>
                 <th class="tw-p-4">{{ $t('user') }}</th>
                 <th class="tw-p-4">{{ $t('status') }}</th>
-                <th class="tw-p-4">{{ $t('actionStatus') }}</th>
-                <th class="tw-p-4">{{ $t('applicationStatus') }}</th>
                 <th class="tw-p-4">{{ $t('role') }}</th>
                 <th class="tw-p-4">{{ $t('actions') }}</th>
             </tr>
@@ -140,15 +137,13 @@
                 <input type="checkbox" class="tw-w-4 tw-h-4 tw-rounded" />
                 </td>
                 <td class="tw-p-4 tw-flex tw-items-center tw-gap-2">
-                <img :src="getImage(startup.logoPath)" class="tw-w-8 tw-h-8 tw-rounded-full" />
                 <div>
                     <div class="tw-font-medium">{{ startup.publicName }}</div>
                     <div class="tw-text-gray-500">{{ startup.organizationName }}</div>
                     <div class="tw-text-gray-500">{{ startup.countryName }}</div>
                 </div>
                 </td>
-                <td class="tw-p-4 tw-text-orange-500">{{ startup.status || $t('pending') }}</td>
-                <td class="tw-p-4 tw-text-green-600">{{ startup.applicationStatus || $t('approved') }}</td>
+                <td class="tw-p-4 tw-text-orange-500">{{ startup.status || $t('Pending') }}</td>
                 <td class="tw-p-4">{{ startup.investorType || $t('ventureCompany') }}</td>
                 <td class="tw-p-4 tw-flex tw-gap-2">
                 <button @click="updateStartupStatus(startup.id, 'Accepted')" class="tw-bg-green-500 tw-text-white tw-px-4 tw-py-2 tw-rounded-lg">

@@ -12,25 +12,6 @@
 			</nav>
 	
 			<div class="tw-hidden md:tw-flex tw-items-center tw-gap-3">
-			<v-menu>
-				<template v-slot:activator="{ props }">
-				<v-btn variant="text" v-bind="props">
-					{{ currentLocaleName }}
-				</v-btn>
-				</template>
-				<v-list>
-				<v-list-item
-				@click="changeLocale(l.code)"
-					v-for="(l, index) in locales"
-					:key="index"
-					:value="index"
-				>
-					<v-list-item-title>
-<span class="tw-mr-2">{{ l.flag }}</span> {{ l.name }}
-</v-list-item-title>
-				</v-list-item>
-				</v-list>
-			</v-menu>
 					<Username v-if="serviceStore.JWT_TOKEN"/>
 					<div v-else>
 					<NuxtLink to="/auth/login" class="tw-w-full tw-text-center tw-py-2 tw-px-2 tw-text-white tw-rounded tw-bg-[#36CE9F]/80">

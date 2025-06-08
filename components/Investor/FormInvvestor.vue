@@ -93,15 +93,59 @@
 		  v-model="form.allob"
    ></v-text-field>
                </div>
+			   <div class="tw-mb-4">
+	<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="fullname">Идентификационный номер</label>
+   <v-text-field
+        class="tw-w-full tw-mt-2"
+        id="fullname"
+        placeholder="Идентификационный данные"
+        variant="outlined"
+		  autocomplete="off"
+		  v-model="form.indentidynumber"
+   ></v-text-field>
+               </div>
 					<div class="tw-mb-4">
-						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="length">Количество сотрудников</label>
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="length">Организации</label>
 					   <v-text-field
 					        class="tw-w-full tw-mt-2"
 					        id="length"
-                       placeholder="Укажите количество сотрудников"
+                       placeholder="Организация"
                        variant="outlined"
 							  autocomplete="off"
-							  v-model="form.listusers"
+							  v-model="form.orginizationname"
+                  ></v-text-field>
+					</div>
+					<div class="tw-mb-4">
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="length">Вебсайт</label>
+					   <v-text-field
+					        class="tw-w-full tw-mt-2"
+					        id="length"
+                       placeholder="Вебсайт"
+                       variant="outlined"
+							  autocomplete="off"
+							  v-model="form.website"
+                  ></v-text-field>
+					</div>
+					<div class="tw-mb-4">
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="length">Контакт</label>
+					   <v-text-field
+					        class="tw-w-full tw-mt-2"
+					        id="length"
+                       placeholder="Контакт"
+                       variant="outlined"
+							  autocomplete="off"
+							  v-model="form.contactname"
+                  ></v-text-field>
+					</div>
+					<div class="tw-mb-4">
+						<label class="tw-text-[#767A87] tw-font-[400] tw-text-[14px] tw-leading-[12px]" for="length">Размер инвестиционных средств</label>
+					   <v-text-field
+					        class="tw-w-full tw-mt-2"
+					        id="length"
+                       placeholder="$"
+                       variant="outlined"
+							  autocomplete="off"
+							  v-model="form.allob"
                   ></v-text-field>
 					</div>
 					<div class="tw-mb-4">
@@ -145,11 +189,11 @@
   <v-autocomplete
     class="tw-w-full tw-mt-2"
     label="Выберите технологии"
-    :items="innovationMethods"
+    :items="techModel"
     item-title="name"
     item-value="id"
     variant="outlined"
-    v-model="form.innovationmethod"
+    v-model="form.techmodel"
   ></v-autocomplete>
 </div>
 
@@ -188,7 +232,9 @@ const form = ref({
 	techmodel: null,
 	allob: 0,
 	listalluser: '',
-	profilephotot: null
+	profilephotot: null,
+	website: '',
+	contactname: ''
 })
 
 const country = ref([])
@@ -208,16 +254,16 @@ const registerAnketa = async () => {
 	try {
 		const response = await axios.post('https://zhervc-api.azurewebsites.net/api/Investor', {
 			FullName: form.value.username,
-			ContactFullName: 'asdfasf',
+			ContactFullName: form.value.contactname,
 			PublicEmail: form.value.gmail,
 			PhoneNumber: form.value.phonenumber,
 			CountryId: form.value.country,
-			Website: 'asdfasf',
-			OrganizationName: 'adsf',
+			Website: form.value.website,
+			OrganizationName: form.value.orginizationname,
 			InvestorType: 'Angel',
-			IdentificationNumber: '63',
+			IdentificationNumber: form.value.indentidynumber,
 			Description: form.value.description,
-			InvestmentAmount: 0.5,
+			InvestmentAmount: form.value.allob,
 			HasStartupPilotExperience: true,
 			InvestsInStartups: false,
 			SourceInfoId: 1,
@@ -235,7 +281,7 @@ const registerAnketa = async () => {
 			}
 		})
 		console.log('All corect', response.data)
-		router.push('/investor/questionnairee')
+		router.push('/investor/questionnaire')
 	}catch(err) {
 		console.log(err)
 	}

@@ -54,7 +54,7 @@ const resetPassword = async () => {
 			}
 		})
 		console.log(res)
-		serviceStore.toast.success("Uploaded code")
+		serviceStore.toast.success("Пароль успешно изменен")
 		router.push('/auth/login')
 	}catch(err) {
 		console.log(err)

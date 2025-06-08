@@ -6,13 +6,13 @@
 		  <div class="tw-ml-[20px]">
 			<h1 class="tw-font-[600] lg:tw-text-[20px] tw-text-[15px] tw-leading-[120%] tw-mb-4">{{ product.publicName }}</h1>
 			<p class="tw-font-[400] lg:tw-text-[17px] tw-text-[12px] tw-mb-4">
-			  asdf
+			  {{ product.countryName }}
 			</p>
-			<ul class="tw-flex tw-items-center tw-mb-[20px]">
-			  <li class="tw-border-[1px] tw-border-[#B9B1FC] tw-py-[2px] lg:tw-text-[17px] tw-text-[12px] tw-px-[16px] tw-mr-3">
+			<ul class="tw-flex tw-items-center tw-flex-wrap tw-mb-[20px]">
+			  <li class="tw-border-[1px] tw-border-[#B9B1FC] tw-py-[2px] tw-mb-2 lg:tw-text-[17px] tw-text-[12px] tw-px-[16px] tw-mr-3">
 				{{ product.developmentStage }}
 			  </li>
-			  <li class="tw-border-[1px] tw-border-[#B9B1FC] lg:tw-text-[17px] tw-text-[12px] tw-py-[2px] tw-px-[16px]">
+			  <li class="tw-border-[1px] tw-border-[#B9B1FC] tw-flex-wrap tw-mb-2 lg:tw-text-[17px] tw-text-[12px] tw-py-[2px] tw-px-[16px]">
 					{{ product.organizationName }}
 			</li>
 			</ul>

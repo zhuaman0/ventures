@@ -13,7 +13,7 @@
                 {{ productDetail?.description }}
             </p>
             </div>
-			  <div class="tw-grid sm:tw-grid-cols-2 tw-gap-4 tw-mb-8">
+			  <div class="tw-grid sm:tw-grid-cols-2 tw-gap-4 tw-mb-4">
             <div>
                 <h2 class="tw-text-sm tw-text-[#9296A1] tw-mb-1">Год основания</h2>
                 <p class="tw-text-[#181236]">{{ productDetail?.foundingYear }}</p>
@@ -35,18 +35,22 @@
                 {{ item }}
 					 </li>
 				</ul>
-				<div class="tw-flex tw-items-center tw-mb-[15px]">
+				<div class="tw-grid tw-gap-5 lg:tw-grid-cols-3 tw-grid-cols-1 tw-mt-5 tw-mb-[15px]">
 					   <div>
 					   	<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Стадия инвестирования</h1>
 					   	<p class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-leading-[20px]">{{ productDetail?.organizationName }}</p>
 					   </div>
-						<div class="tw-ml-[20px]">
+						<div class="">
 					   	<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Стадия проекта</h1>
 					   	<p class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-leading-[20px]">{{ productDetail?.developmentStage }}</p>
 					   </div>
-					   <div class="tw-ml-[20px]">
+					   <div class="">
 					   	<h1 class="tw-text-[#9296A1] tw-text-[14px] tw-font-[400] tw-leading-[20px] tw-mb-[2px]">Модель продаж</h1>
-					   	<p class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-leading-[20px]">{{ productDetail?.salesModels }}</p>
+              <ul>
+                <li v-for="(item, index) in productDetail?.salesModels" :key="index" class="tw-text-[#181236] tw-text-[16px] tw-font-[400] tw-leading-[20px]">
+                  {{ item }}
+                </li>
+              </ul>
 					   </div>
 				</div>
 				 <div class="tw-mb-[15px]">
@@ -62,7 +66,7 @@
             </div>
     
             <div @click="offerStartup" class="tw-flex tw-justify-start tw-items-start">
-            <button class="tw-bg-[#36CE9F] tw-text-white tw-text-[16px] tw-px-20 tw-py-3 hover:tw-opacity-90 tw-transition">
+            <button v-show="role !== 'Startup'" class="tw-bg-[#36CE9F] tw-text-white tw-text-[16px] tw-px-20 tw-py-3 hover:tw-opacity-90 tw-transition">
                 Связаться
             </button>
             </div>
@@ -82,6 +86,7 @@ const productDetail = ref<typeDetail>()
 const id = route.params.id
 const serviceStore = useServiceStore();
 const showModal = ref(false)
+const role = localStorage.getItem('role')
 
 interface typeDetail  {
   "id": 0,

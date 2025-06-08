@@ -30,15 +30,6 @@
 		  </li>
 		</ul>
 	  </div>
-  
-	  <div
-		class="tw-bg-white tw-max-w-2xl tw-mt-6 tw-flex tw-justify-between tw-items-center tw-py-4 tw-px-4 tw-rounded-lg tw-shadow-sm tw-cursor-pointer hover:tw-bg-gray-50"
-	  >
-		<h2 class="tw-text-[#181236] tw-font-bold tw-text-[16px] sm:tw-text-[18px]">
-		  Изменить пароль
-		</h2>
-		<Icon name="mdi:arrow-right" class="tw-text-xl" />
-	  </div>
 	</div>
   </template>
   

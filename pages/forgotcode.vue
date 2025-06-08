@@ -25,7 +25,7 @@ definePageMeta({
 })
 
 const serviceStore = useServiceStore();
-const otp = shallowRef('31445');
+const otp = shallowRef('');
 const email = ref(localStorage.getItem('email'))
 const router = useRouter();
 
