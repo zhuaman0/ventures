@@ -10,7 +10,7 @@
 			<NuxtLink to="/" class="hover:tw-text-green-600">Корпорации</NuxtLink>
 			<NuxtLink @click="investorPage" class="hover:tw-text-green-600">Инвесторы</NuxtLink>
 			<NuxtLink to="/" class="hover:tw-text-green-600">Специалисты</NuxtLink>
-			<NuxtLink to="/" class="hover:tw-text-green-600">Новости</NuxtLink>
+			<NuxtLink @click="newsPage"  class="hover:tw-text-green-600">Новости</NuxtLink>
 			</nav>
 	
 			<div class="tw-hidden md:tw-flex tw-items-center tw-gap-3">
@@ -136,6 +136,13 @@ const investorPage = () => {
 	router.push({ path: '/product/product-list/', query: { type: 'Investor' } })
 }
 
+const specialistPage = () => {
+	router.push({ path: '/specialists/specialist/', query: { type: 'Specialist' } })
+}
+
+const newsPage = () => {
+	router.push({ path: '/news/news/', query: { type: 'news' } })
+}
 	</script>
 	
 	<style scoped>
