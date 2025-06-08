@@ -5,7 +5,7 @@
 					{{ productDetail?.publicName }}
             </h1>
     
-            <img class="tw-mb-4 tw-w-[163px] tw-h-[85px]" :src="getImage" alt="">
+            <img class="tw-mb-4 tw-w-[163px] tw-h-[35px]" v-if="productDetail?.logoPath" :src="getImage" alt="">
     
             <div class="tw-mb-6">
             <h2 class="tw-text-sm tw-text-[#9296A1] tw-mb-1">Описание</h2>
@@ -61,24 +61,27 @@
 					</div>
             </div>
     
-            <div class="tw-flex tw-justify-start tw-items-start">
+            <div @click="offerStartup" class="tw-flex tw-justify-start tw-items-start">
             <button class="tw-bg-[#36CE9F] tw-text-white tw-text-[16px] tw-px-20 tw-py-3 hover:tw-opacity-90 tw-transition">
                 Связаться
             </button>
             </div>
         </div>
+		  <ModalOffer @onClick="onClick" :targetId="productDetail?.id" v-if="showModal"/>
 		  <IsRegistered v-if="!serviceStore.JWT_TOKEN" class="tw-ml-2 sm:tw-ml-4 md:tw-ml-6 lg:tw-ml-20"/>
     </div>
 </template>
     
 
 <script setup lang="ts">
+import { ModalOffer } from '#components'
 import axios from 'axios'
 import { useServiceStore } from '~/stores/services'
 const route = useRoute()
 const productDetail = ref<typeDetail>()
 const id = route.params.id
 const serviceStore = useServiceStore();
+const showModal = ref(false)
 
 interface typeDetail  {
   "id": 0,
@@ -126,6 +129,7 @@ const getDetailItem = async() => {
 		console.log(id)
 	}catch(err) {
 		console.log(err)
+		console.log('Solve problem')
 	}
 }
 
@@ -135,6 +139,14 @@ const getImage = computed(() => {
 
 const getImagee = (logo: any) => {
 	return `https://zhervc-api.azurewebsites.net/${logo}`
+}
+
+const offerStartup = () => {
+	showModal.value = true
+}
+
+const onClick = () => {
+	showModal.value = false
 }
 
 onMounted(() => {

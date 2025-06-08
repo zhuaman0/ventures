@@ -66,6 +66,7 @@ export const useServiceStore = defineStore('service', {
 			},
 			localStorage.removeItem("JWT_TOKEN");
 		   localStorage.removeItem('email')
+			localStorage.removeItem('role')
 			this.JWT_TOKEN = ''
 		},
 		setToken(token: string) {

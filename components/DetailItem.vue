@@ -6,7 +6,7 @@
 		  <div class="tw-ml-[20px]">
 			<h1 class="tw-font-[600] tw-text-[20px] tw-leading-[120%] tw-mb-4">{{ product.publicName }}</h1>
 			<p class="tw-font-[400] tw-mb-4">
-			  {{ product.countryName }}
+			  asdf
 			</p>
 			<ul class="tw-flex tw-items-center tw-mb-[20px]">
 			  <li class="tw-border-[1px] tw-border-[#B9B11FC] tw-py-[4px] tw-px-[16px] tw-mr-3">

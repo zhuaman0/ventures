@@ -18,7 +18,7 @@
             :class="{ 'tw-opacity-100': route.path === item.to, 'tw-opacity-0': route.path !== item.to }"
           />
           <img :src="item.icon" class="tw-w-5 tw-h-5" />
-          <NuxtLink :to="item.to" class="tw-text-lg tw-font-medium tw-truncate">
+          <NuxtLink :to="item.to" @click="sideBarItem(item.text)" class="tw-text-lg tw-font-medium tw-truncate">
             {{ t(item.text) }}
           </NuxtLink>
           <span class="tw-ml-auto tw-text-white">⋮</span>
@@ -35,6 +35,8 @@
   import iconStartups from '@/assets/imgadmin/startups.svg'
   import iconInvestors from '@/assets/imgadmin/investors.svg'
   import iconBack from '@/assets/imgadmin/back.svg'
+import { useServiceStore } from '~/stores/services'
+  const serviceStore = useServiceStore();
   
   const { t } = useI18n()
   const route = useRoute()
@@ -61,4 +63,10 @@
       text: 'Выйти'
     }
   ]
+
+  const sideBarItem = (item) => {
+	if(item === 'Выйти') {
+		serviceStore.clearUser()
+	}
+  }
   </script>

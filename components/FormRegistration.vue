@@ -122,10 +122,10 @@ const form = ref({
 const checkpassword = ref('')
 
 const submit = async () => {
-	if(form.value.password !== checkpassword.value) {
-		serviceStore.toast.error('Пароли не совпадают')
-		return
-	}
+	// if(form.value.password !== checkpassword.value) {
+	// 	serviceStore.toast.error('Пароли не совпадают')
+	// 	return
+	// }
 	try {
 		const response = await axios.post("https://zhervc-api.azurewebsites.net/api/Users/register", {
         fullName: form.value.fullName,

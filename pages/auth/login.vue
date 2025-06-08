@@ -48,6 +48,8 @@
 <script setup lang="ts">
 import axios from 'axios';
 import { useServiceStore } from '~/stores/services';
+import { jwtDecode } from 'jwt-decode';
+
 
 
 const serviceStore = useServiceStore();
@@ -75,10 +77,14 @@ const loginUser = async() => {
    serviceStore.JWT_TOKEN = token;
 	serviceStore.setToken(token)
 	serviceStore.isRegistered = true;
+
+	const decoded: any = jwtDecode(token)
+	const userRole = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+	localStorage.setItem('role', userRole)
 	if(password.value === 'admin') {
 		router.push('/admin')
 	}else {
-		router.push({ path: '/auth/anketa/', query: { role: role.value} })
+		router.push({ path: '/auth/anketa/', query: { role: userRole} })
 	}
 	}catch(err) {
 		console.log(err)

@@ -15,6 +15,8 @@
 							<ul class="tw-space-y-3">
 								<li v-for="(item, index) in industries" :key="index" class="tw-flex tw-items-center">
 									<input
+										:value="item.id"
+										v-model="selectedIndustries"
 										type="checkbox"
 										class="tw-w-4 tw-h-4 tw-text-[#228B6B] tw-bg-gray-100 tw-border-gray-300 tw-rounded focus:tw-ring-[#228B6B]"
 									>
@@ -29,6 +31,8 @@
 							<ul class="tw-space-y-3">
 								<li v-for="(item, index) in technologies" :key="index" class="tw-flex tw-items-center">
 									<input
+									  :value="item.id"
+									  v-model="selectedTechnologies"
 										type="checkbox"
 										class="tw-w-4 tw-h-4 tw-text-[#228B6B] tw-bg-gray-100 tw-border-gray-300 tw-rounded focus:tw-ring-[#228B6B]"
 									>
@@ -43,6 +47,8 @@
 							<ul class="tw-space-y-3">
 								<li v-for="(item, index) in developmentStages" :key="index" class="tw-flex tw-items-center">
 									<input
+									   :value="item.id"
+										v-model="selectedDevelopmentStages"
 										type="checkbox"
 										class="tw-w-4 tw-h-4 tw-text-[#228B6B] tw-bg-gray-100 tw-border-gray-300 tw-rounded focus:tw-ring-[#228B6B]"
 									>
@@ -57,6 +63,8 @@
 							<ul class="tw-space-y-3">
 								<li v-for="(item, index) in innovationMethods" :key="index" class="tw-flex tw-items-center">
 									<input
+										:value="item.id"
+										v-model="selectedInnovationMethods"
 										type="checkbox"
 										class="tw-w-4 tw-h-4 tw-text-[#228B6B] tw-bg-gray-100 tw-border-gray-300 tw-rounded focus:tw-ring-[#228B6B]"
 									>
@@ -110,6 +118,10 @@ import { useServiceStore } from '~/stores/services'
    const technologies = ref([])
    const developmentStages = ref([])
    const innovationMethods = ref([])
+	const selectedIndustries = ref([])
+const selectedTechnologies = ref([])
+const selectedDevelopmentStages = ref([])
+const selectedInnovationMethods = ref([])
 	const serviceStore = useServiceStore();
 	const route = useRoute()
 	const searchQuery = ref('')
@@ -159,10 +171,12 @@ import { useServiceStore } from '~/stores/services'
 		}
 	}
 
-	const lenghtItems = computed(() => {
-		if(route.query.type === 'Investor') return products.value.length
-		if(route.query.type === 'Investor') return productss.value.length
-	})
+const lenghtItems = computed(() => {
+	if (route.query.type === 'Startup') return products.value.length
+	if (route.query.type === 'Investor') return productss.value.length
+	return 0
+})
+
 
 	const filteredProducts = computed(() => {
 		return products.value.filter(product => product.publicName.toLowerCase().includes(searchQuery.value.toLowerCase()))
@@ -170,6 +184,40 @@ import { useServiceStore } from '~/stores/services'
 	const filteredProductss = computed(() => {
 		return productss.value.filter(product => product.fullName.toLowerCase().includes(searchQuery.value.toLowerCase()))
 	})
+
+	watch(
+  [selectedIndustries, selectedTechnologies, selectedDevelopmentStages, selectedInnovationMethods],
+  async () => {
+    const params = new URLSearchParams()
+
+    if (selectedIndustries.value.length) {
+      selectedIndustries.value.forEach(id => params.append('industryIds', id))
+    }
+
+    if (selectedTechnologies.value.length) {
+      selectedTechnologies.value.forEach(id => params.append('technologyIds', id))
+    }
+
+    if (selectedDevelopmentStages.value.length) {
+      selectedDevelopmentStages.value.forEach(id => params.append('developmentStageIds', id))
+    }
+
+    if (selectedInnovationMethods.value.length) {
+      selectedInnovationMethods.value.forEach(id => params.append('innovationMethodIds', id))
+    }
+
+    const url = `https://zhervc-api.azurewebsites.net/api/Startups?${params.toString()}`
+
+    try {
+      const response = await axios.get(url)
+      products.value = response.data
+    } catch (error) {
+      console.error('Ошибка при загрузке данных:', error)
+    }
+  },
+  { deep: true }
+)
+
 
 	onMounted(() => {
 	getProductsDetail(),
