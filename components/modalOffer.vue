@@ -7,7 +7,7 @@
 	leave-active-class="animite_animated animate_fadeOut animate_faster"
 	appear
 	>
-	<div class="tw-max-w-[390px] tw-min-w-[390px] tw-max-h-max tw-rounded-[12px] tw-bg-white tw-px-4 tw-pt-[10px] tw-pb-4">
+	<div class="tw-max-w-[290px] tw-min-w-[290px] lg:tw-max-w-[290px] lg:tw-min-w-[290px] tw-max-h-max tw-rounded-[12px] tw-bg-white tw-px-4 tw-pt-[10px] tw-pb-4">
 		<h1 class="tw-mt-4 tw-text-[#181236] tw-font-bold tw-text-center tw-text-[20px]">
 			Связаться
 		</h1>
@@ -54,6 +54,7 @@ const sendMessage = async() => {
 		serviceStore.toast.success('Отправлено')
 	}catch(err) {
 		console.log(err)
+		serviceStore.toast.error('Ошибка при отправке сообщения')
 	}
 }
 

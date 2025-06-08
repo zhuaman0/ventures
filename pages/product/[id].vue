@@ -1,11 +1,11 @@
 <template>
     <div class="tw-p-4 sm:tw-p-6 md:tw-p-8 tw-w-full">
-        <div class="tw-ml-2 sm:tw-ml-4 md:tw-ml-6 lg:tw-ml-20 tw-w-full tw-max-w-3xl md:tw-w-2/3 tw-bg-white tw-shadow-lg tw-p-6 sm:tw-p-8">
+        <div class="tw-ml-2 sm:tw-ml-4 md:tw-ml-6 lg:tw-ml-20 tw-mr-2 tw-w-full tw-max-w-3xl md:tw-w-2/3 tw-bg-white tw-shadow-lg tw-p-6 sm:tw-p-8">
             <h1 class="tw-text-2xl sm:tw-text-3xl tw-font-bold tw-text-[#181236] tw-mb-6 sm:tw-mb-8">
 					{{ productDetail?.publicName }}
             </h1>
     
-            <img class="tw-mb-4 tw-w-[163px] tw-h-[35px]" v-if="productDetail?.logoPath" :src="getImage" alt="">
+            <img class="tw-mb-4 tw-w-[163px] tw-h-full" v-if="productDetail?.logoPath" :src="getImage" alt="">
     
             <div class="tw-mb-6">
             <h2 class="tw-text-sm tw-text-[#9296A1] tw-mb-1">Описание</h2>

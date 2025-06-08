@@ -7,7 +7,7 @@
 
       <img
         v-if="productDetail?.logoPath"
-        class="tw-mb-4 tw-w-[163px] tw-h-[85px]"
+        class="tw-mb-4 tw-w-[163px] tw-h-full"
         :src="getImage(productDetail.logoPath)"
         alt="Логотип"
       />

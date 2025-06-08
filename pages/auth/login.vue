@@ -33,7 +33,7 @@
 				</form>
 				<div class="tw-flex tw-flex-row tw-justify-between tw-items-center tw-mb-4">
 					<v-checkbox color="green" label="Запомнить меня"></v-checkbox>
-					<span class="tw-text-[#36CE9F] tw-font-bold tw-text-[16px] tw-leading-[20px]">Забыл пароль?</span>
+					<span @click="forgotPassword" class="tw-text-[#36CE9F] tw-font-bold tw-text-[16px] tw-leading-[20px]">Забыл пароль?</span>
 				</div>
 				<button @click="loginUser" class="tw-w-full tw-bg-[#36CE9F] tw-text-[#fff] tw-h-[48px] tw-mb-4">Войти</button>
 				<div class="tw-flex tw-items-center tw-justify-center">
@@ -89,6 +89,10 @@ const loginUser = async() => {
 	}catch(err) {
 		console.log(err)
 	}
+}
+
+const forgotPassword = () => {
+	router.push('/reset')
 }
 
 onMounted(() => {

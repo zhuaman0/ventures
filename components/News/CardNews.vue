@@ -14,7 +14,7 @@
             </div>
             <a
             :href="link"
-            class="tw-text-green-500 tw-font-medium tw-flex tw-items-center tw-gap-1 hover:tw-underline tw-mt-4"
+            class="tw-text-[#36CE9F] tw-font-medium tw-flex tw-items-center tw-gap-1 hover:tw-underline tw-mt-4"
             >
             Подробнее
             <svg

@@ -6,11 +6,9 @@
 			</div>
 	
 			<nav class="tw-hidden lg:tw-flex tw-items-center tw-gap-6 tw-text-sm tw-font-bold tw-text-gray-900">
-			<NuxtLink @click="startupPage" class="hover:tw-text-green-600">Стартапы</NuxtLink>
-			<NuxtLink to="/" class="hover:tw-text-green-600">Корпорации</NuxtLink>
-			<NuxtLink @click="investorPage" class="hover:tw-text-green-600">Инвесторы</NuxtLink>
-			<NuxtLink to="/" class="hover:tw-text-green-600">Специалисты</NuxtLink>
-			<NuxtLink @click="newsPage"  class="hover:tw-text-green-600">Новости</NuxtLink>
+			<NuxtLink @click="startupPage" class="hover:tw-text-[#36CE9F]">Стартапы</NuxtLink>
+			<NuxtLink @click="investorPage" class="hover:tw-text-[#36CE9F]">Инвесторы</NuxtLink>
+			<NuxtLink @click="newsPage"  class="hover:tw-text-[#36CE9F]">Новости</NuxtLink>
 			</nav>
 	
 			<div class="tw-hidden md:tw-flex tw-items-center tw-gap-3">
@@ -54,17 +52,14 @@
 			<div v-if="drawerOpen" class="tw-fixed tw-inset-0 tw-z-50 tw-bg-black/50" @click.self="drawerOpen = false">
 			<div class="tw-fixed tw-right-0 tw-top-0 tw-w-80 tw-h-full tw-bg-white tw-p-6 tw-flex tw-flex-col ">
 				<div class="tw-flex tw-justify-between tw-items-center tw-mb-6">
-				<div class="tw-font-bold tw-text-lg">			<img src="@/assets/icons/header_logo.svg" alt="">
+				<div @click="$router.push('/')" class="tw-font-bold tw-text-lg"><img src="@/assets/icons/header_logo.svg" alt="">
 				</div>
 				<Icon name="material-symbols-light:close" class="tw-text-2xl tw-cursor-pointer" @click="drawerOpen = false" />
 				</div>
-	
 				<nav class="tw-flex tw-flex-col tw-gap-6 tw-font-bold">
-				<NuxtLink to="/" class="hover:tw-text-green-600">Стартапы</NuxtLink>
-				<NuxtLink to="/" class="hover:tw-text-green-600">Корпорации</NuxtLink>
-				<NuxtLink to="/" class="hover:tw-text-green-600">Инвесторы</NuxtLink>
-				<NuxtLink to="/" class="hover:tw-text-green-600">Специалисты</NuxtLink>
-				<NuxtLink to="/" class="hover:tw-text-green-600">Новости</NuxtLink>
+					<NuxtLink @click="startupPage" class="hover:tw-text-[#36CE9F]">Стартапы</NuxtLink>
+			        <NuxtLink @click="investorPage" class="hover:tw-text-[#36CE9F]">Инвесторы</NuxtLink>
+			        <NuxtLink @click="newsPage"  class="hover:tw-text-[#36CE9F]">Новости</NuxtLink>
 				
 				</nav>
 	
@@ -87,12 +82,15 @@
 						</v-list-item>
 						</v-list>
 					</v-menu>
-					<NuxtLink to="/auth/login" class="tw-bg-[#] tw-w-full tw-text-center tw-text-white tw-py-2 tw-rounded hover:tw-bg-[#36CE9F]/80">
+					<Username v-if="serviceStore.JWT_TOKEN"/>
+					<div v-else>
+						<NuxtLink to="/auth/login" class="tw-w-full tw-text-center tw-text-white tw-py-2 tw-rounded tw-bg-[#36CE9F]">
 						Войти
 					</NuxtLink>
-					<NuxtLink to="/" class="tw-border tw-border-[#36CE9F] tw-text-green-600 tw-w-full tw-text-center tw-py-2 tw-rounded hover:tw-bg-[#36CE9F]/10">
+					<NuxtLink to="/auth/registration" class="tw-border tw-border-[#36CE9F] tw-text-green-600 tw-w-full tw-text-center tw-py-2 tw-rounded hover:tw-bg-[#36CE9F]/10">
 						Регистрация
 					</NuxtLink>
+					</div>
 				</div>
 			</div>
 			</div>
